@@ -1,0 +1,31 @@
+{
+  "name": "project-3",
+  "version": "1.0.0",
+  "description": "A user management software application using React.js, Node, &amp; More",
+  "main": "index.js",
+  "dependencies": {
+    "@types/express": "^4.17.6",
+    "concurrently": "^5.2.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.0.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "typescript": "^3.9.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start:dev": "nodemon dist/index.js",
+    "build:dev": "tsc --watch --preserveWatchOutput",
+    "dev": "concurrently \"npm:build:dev\" \"npm:start:dev\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jenniferkirwin/project-3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jenniferkirwin/project-3/issues"
+  },
+  "homepage": "https://github.com/jenniferkirwin/project-3#readme"
+}
