@@ -4,7 +4,9 @@
   "description": "A user management software application using React.js, Node, &amp; More",
   "main": "index.js",
   "dependencies": {
+    "@material-ui/core": "^4.9.14",
     "@types/express": "^4.17.6",
+    "@types/material-ui": "^0.21.7",
     "concurrently": "^5.2.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.0.0",
