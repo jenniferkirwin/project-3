@@ -11,11 +11,16 @@
     "dotenv": "^8.2.0",
     "eslint": "^7.0.0",
     "express": "^4.17.1",
-    "nodemon": "^2.0.4",
-    "sequelize": "^5.21.10",
-    "typescript": "^3.9.2"
+    "nodemon": "^2.0.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.5",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
+    "typescript": "^3.9.3"
+  },
   "scripts": {
     "start:dev": "nodemon dist/index.js",
     "build:dev": "tsc --watch --preserveWatchOutput",
