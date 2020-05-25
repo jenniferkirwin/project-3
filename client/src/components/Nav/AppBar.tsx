@@ -129,10 +129,10 @@ export default function SearchAppBar() {
       <AppBar position="static">
         <Toolbar>
           <IconButton
-            edge="start"
-            className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
           >
             <MenuIcon />
           </IconButton>
