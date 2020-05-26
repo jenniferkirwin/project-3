@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      flexGrow: 1,
+      flexGrow: 2,
     },
     paper: {
       height: 140,
@@ -34,8 +34,21 @@ export default function LandingGrid() {
     <React.Fragment>
       <CssBaseline />
       <Container fixed>
-        <Grid container className={classes.root} spacing={2}>
-          <Grid item md={2}>
+
+          <Grid container className={classes.root} spacing={4}>
+            <Grid item lg={12}>
+              <Grid container justify="center" spacing={spacing}>
+                {[0, 1, 2].map((value) => (
+                  <Grid key={value} item>
+                    <Paper className={classes.paper} />
+                  </Grid>
+                ))}
+              </Grid>
+            </Grid>
+          </Grid>
+
+        <Grid container className={classes.root} spacing={4}>
+          <Grid item lg={12}>
             <Grid container justify="center" spacing={spacing}>
               {[0, 1, 2].map((value) => (
                 <Grid key={value} item>
@@ -45,6 +58,19 @@ export default function LandingGrid() {
             </Grid>
           </Grid>
         </Grid>
+
+        <Grid container className={classes.root} spacing={4}>
+          <Grid item lg={12}>
+            <Grid container justify="center" spacing={spacing}>
+              {[0, 1, 2].map((value) => (
+                <Grid key={value} item>
+                  <Paper className={classes.paper} />
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+        </Grid>
+        
       </Container>
     </React.Fragment>
   );
