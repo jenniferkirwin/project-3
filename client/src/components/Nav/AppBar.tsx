@@ -129,15 +129,15 @@ export default function SearchAppBar() {
       <AppBar position="static">
         <Toolbar>
           <IconButton
-            edge="start"
-            className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
           >
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            Dashboard
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
