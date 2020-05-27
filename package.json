@@ -2,7 +2,7 @@
   "name": "project-3",
   "version": "1.0.0",
   "description": "A user management software application using React.js, Node, &amp; More",
-  "main": "index.js",
+  "main": "dist/index.js",
   "dependencies": {
     "@material-ui/core": "^4.9.14",
     "@types/express": "^4.17.6",
@@ -11,7 +11,8 @@
     "concurrently": "^5.2.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "sequelize": "^5.21.11"
   },
   "devDependencies": {
     "@types/jest": "^25.2.3",
