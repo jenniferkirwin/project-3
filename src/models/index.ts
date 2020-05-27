@@ -7,6 +7,7 @@ import { initEnrollment } from "./enrollment";
 import { initAssignment } from "./assignment";
 import { initAnnouncement } from "./announcement";
 import { initSubmitted } from "./submitted";
+import { initSchoolRole } from "./school-role";
 
 const env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "/../config/config.ts")[env];
@@ -23,6 +24,7 @@ const db: any = {
     Assignment: initAssignment(sequelize),
     Announcement: initAnnouncement(sequelize),
     Submitted: initSubmitted(sequelize),
+    SchoolRole: initSchoolRole(sequelize),
   };
   
   Object.keys(db).forEach(modelName => {

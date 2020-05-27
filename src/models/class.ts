@@ -19,6 +19,7 @@ export function initClass(sequalize: Sequelize.Sequelize): ClassModel {
         Class.hasMany(models.Assignment);
         Class.hasMany(models.Announcement);
         Class.belongsTo(models.School, { as: "school", foreignKey: "schoolID" });
+        Class.belongsTo(models.User, { as: "user", foreignKey: "userId" });
     }
 
     return Class;

@@ -20,7 +20,6 @@ export function initSchool(sequalize: Sequelize.Sequelize): SchoolModel {
     const School = sequalize.define<SchoolInstance, SchoolAttributes>("School", attributes);
     School.associate = models => {
         School.hasMany(models.Class);
-        School.belongsTo(models.User, { as: "user", foreignKey: "userID" });
     }
 
     return School;
