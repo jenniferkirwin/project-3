@@ -21,14 +21,7 @@ export function initUser(sequalize: Sequelize.Sequelize): UserModel {
     User.associate = models => {
         User.hasMany(models.Class);
         User.hasMany(models.Enrollment);
-
-        // Can add below for multiple school functionality
-        //User.hasMany(models.School);
-
-        // Add below for the 1:many relationships Scott mentioned?
-        // User.hasMany(models.Assignment);
-        // User.hasMany(models.Announcement);
-        // User.hasMany(models.Submitted);
+        User.hasMany(models.SchoolRole);
         User.belongsTo(models.Role, { as: "role", foreignKey: "roleID" });
     }
 
