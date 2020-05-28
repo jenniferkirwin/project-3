@@ -1,5 +1,11 @@
 import React from 'react';
 import clsx from 'clsx';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  RouteComponentProps
+} from "react-router-dom";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -18,6 +24,10 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import HomeIcon from '@material-ui/icons/Home';
+import GradeIcon from '@material-ui/icons/Grade';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 const drawerWidth = 240;
@@ -135,8 +145,36 @@ const useStyles = makeStyles((theme: Theme) =>
       ...theme.mixins.toolbar,
       justifyContent: 'flex-end',
     },
+    listItem: {
+      color: "black"
+    },
   }),
 );
+
+const menuItems = [
+  {
+    listIcon: <HomeIcon />,
+    listText: "Home",
+    listPath: "/"
+  },
+  {
+    listIcon: <AssignmentIcon />,
+    listText: "Assignments",
+    listPath: "/assignments",
+  },
+  {
+    listIcon: <GradeIcon />,
+    listText: "Grades",
+    listPath: "/grades",
+  },
+  {
+    listIcon: <CalendarTodayIcon />,
+    listText: "Calendar",
+    listPath: "/calendar",
+  },
+]
+
+type TParams = { id: string };
 
 export default function SearchAppBar() {
   const classes = useStyles();
@@ -206,12 +244,14 @@ export default function SearchAppBar() {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+          {/* {menuItems.map((lsItem, key) => (
+            <ListItem button key={key} component={Link} to={lsItem.listPath}>
+              <ListItemIcon className={classes.listItem}>
+                {lsItem.listIcon}
+              </ListItemIcon>
+              <ListItemText className={classes.listItem} primary={lsItem.listText} />
             </ListItem>
-          ))}
+          ))} */}
         </List>
         <Divider />
         <List>
