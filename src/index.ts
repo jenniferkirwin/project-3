@@ -8,22 +8,20 @@ const app = express();
 app.use(express.json());
 
 // Getting sequelize for database
-// const db = require("./models");
+const db = require('./models');
 
 // Routes
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
+// Add Routes Here
+
 // Connects to database then starts the server
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-// db.sequelize.sync().then(function() {
-//   app.listen(PORT, () => {
-//     console.log(`Server is listening on port ${PORT}`);
-//   });
-// });
-
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+db.sequelize.sync().then(function() {
+  app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
+  });
 });
