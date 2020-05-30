@@ -35,3 +35,42 @@ const useStyles = makeStyles((theme: Theme) =>
         },
     }),
 );
+
+export default function TeacherPage() {
+    
+    const classes = useStyles();
+
+    const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+    return(
+        <div>
+
+            <main className={classes.content}>
+                <div className={classes.appBarSpacer} />
+                <Container maxWidth="lg" className={classes.container}>
+                    <Grid container spacing={3}>
+
+                        <Grid item xs={12} md={8} lg={9}>
+                            <Paper className={fixedHeightPaper}>
+                                <TeacherAssignmentCard />
+                            </Paper>
+                        </Grid>
+
+                        <Grid item xs={12} md={8} lg={9}>
+                            <Paper className={fixedHeightPaper}>
+                                <TeacherAssignmentCard />
+                            </Paper>
+                        </Grid>
+
+                        <Grid item xs={12} md={8} lg={9}>
+                            <Paper className={fixedHeightPaper}>
+                                <TeacherAssignmentCard />
+                            </Paper>
+                        </Grid>
+                    </Grid>
+                </Container>
+            </main>
+
+        </div>
+    );
+}
