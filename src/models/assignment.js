@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
         Assignment.hasMany(models.Submitted, {
             foreignKey: "assignmentId"
         });
-        Assignment.belongsTo(models.Class);
+        Assignment.belongsTo(models.Course);
     }
   
     return Assignment;

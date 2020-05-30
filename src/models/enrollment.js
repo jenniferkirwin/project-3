@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
 
     Enrollment.associate = function(models) {
         Enrollment.belongsTo(models.User);
-        Enrollment.belongsTo(models.Class);
+        Enrollment.belongsTo(models.Course);
     }
   
     return Enrollment;

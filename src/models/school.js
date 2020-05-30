@@ -7,16 +7,16 @@ module.exports = function(sequelize, DataTypes) {
         },
         schoolName: { 
             type: DataTypes.STRING, 
-            allowNull: false 
+            allowNull: false
         },
         primaryColor: { 
-            type: DataTypes.NUMBER, 
-            allowNull: false 
+            type: DataTypes.INTEGER, 
+            allowNull: false
         },
         secondaryColor: { 
-            type: DataTypes.NUMBER, 
-            allowNull: false 
-        },
+            type: DataTypes.INTEGER, 
+            allowNull: false
+        }
     });
 
     School.associate = function(models) {
