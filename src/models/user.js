@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     User.associate = function(models) {
-        User.hasMany(models.Class, {
+        User.hasMany(models.Course, {
             foreignKey: "userId"
         });
         User.hasMany(models.Enrollment, {

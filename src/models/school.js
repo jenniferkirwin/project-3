@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     School.associate = function(models) {
-        School.hasMany(models.Class, {
+        School.hasMany(models.Course, {
             foreignKey: "schoolId"
         });
     }
