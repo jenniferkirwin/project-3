@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export default function ClassHoursPage() {
+export default function ClassHoursGrid() {
 
     const classes = useStyles();
 
