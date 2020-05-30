@@ -1,5 +1,8 @@
 import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+
+import Grid from '@material-ui/core/Grid';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
 // import Container from '@material-ui/core/Container';
 import Grid, { GridSpacing } from '@material-ui/core/Grid';
@@ -24,16 +27,41 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function LandingGrid() {
 
-  const [spacing, setSpacing] = React.useState<GridSpacing>(2);
   const classes = useStyles();
+
+
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
   //   setSpacing(Number((event.target as HTMLInputElement).value) as GridSpacing);
   // };
 
+
   return (
     <React.Fragment>
       <CssBaseline />
+
+      <main className={classes.content}>
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth="lg" className={classes.container}>
+          <Grid container spacing={3}>
+            
+            <Grid item xs={12} md={8} lg={9}>
+              <Paper className={fixedHeightPaper}>
+                <SimpleCard />
+              </Paper>
+            </Grid>
+            
+            <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}>
+                <SimpleCard />
+              </Paper>
+            </Grid>
+            
+            <Grid item xs={12}>
+              <Paper className={classes.paper}>
+                <SimpleCard />
+              </Paper>
 
           <Grid container className={classes.root} spacing={4}>
             <Grid item lg={12}>
@@ -67,6 +95,7 @@ export default function LandingGrid() {
                   <SimpleCard />
                 </Grid>
               ))}
+
             </Grid>
           </Grid>
         </Grid>
