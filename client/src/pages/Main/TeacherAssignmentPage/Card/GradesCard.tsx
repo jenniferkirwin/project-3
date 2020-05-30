@@ -26,9 +26,16 @@ export default function GradesCard() {
     return (
         <Card className={classes.root}>
             <CardContent>
-                
+                <Typography className={classes.title} color="textSecondary" gutterBottom>
+                    Overall Grade
+                </Typography>
+                <Typography variant="h5" component="h2">
+                    Name of Student
+                </Typography>
             </CardContent>
+            <CardActions>
+                <Button size="small">Full list of grades</Button>
+            </CardActions>
         </Card>
-    )
-
+    );
 }
