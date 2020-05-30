@@ -1,16 +1,16 @@
 module.exports = function(sequelize, DataTypes) {
     const Submitted = sequelize.define("Submitted", {
         submittedId: { 
-            type: Sequelize.UUID, 
+            type: DataTypes.UUID, 
             primaryKey: true, 
-            defaultValue: Sequelize.UUIDV4 
+            defaultValue: DataTypes.UUIDV4 
         },
         submittedContent: { 
-            type: Sequelize.STRING, 
+            type: DataTypes.STRING, 
             allowNull: true 
         },
         grade: { 
-            type: Sequelize.STRING, 
+            type: DataTypes.STRING, 
             defaultValue: null 
         },
     });

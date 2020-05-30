@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
     const Enrollment = sequelize.define("Enrollment", {
         enrollmentId: { 
-            type: Sequelize.UUID, 
+            type: DataTypes.UUID, 
             primaryKey: true, 
-            defaultValue: Sequelize.UUIDV4 
+            defaultValue: DataTypes.UUIDV4 
         },
     });
 

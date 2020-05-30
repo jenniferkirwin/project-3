@@ -1,12 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
     const Class = sequelize.define("Class", {
         classId: { 
-            type: Sequelize.UUID, 
+            type: DataTypes.UUID, 
             primaryKey: true, 
-            defaultValue: Sequelize.UUIDV4 
+            defaultValue: DataTypes.UUIDV4 
         },
         className: { 
-            type: Sequelize.STRING, 
+            type: DataTypes.STRING, 
             allowNull: false 
         },
     });
