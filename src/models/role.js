@@ -1,21 +1,20 @@
-module.exports = function(sequelize, DataTypes) {
-    const Role = sequelize.define("Role", {
-        roleId: { 
-            type: DataTypes.INTEGER, 
-            primaryKey: true, 
-            autoIncrement: true 
-        },
-        roleName: { 
-            type: DataTypes.STRING, 
-            allowNull: false, 
-        },
-    });
-
-    Role.associate = function(models) {
-        Role.hasMany(models.SchoolRole, {
-            foreignKey: "roleId"
-        });
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const Role = sequelize.define('Role', {
+    roleId: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: UUIDV4
+    },
+    roleName: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
-  
-    return Role;
+  }, {});
+  Role.associate = function(models) {
+    Role.hasMany(models.SchoolRole, {
+      allowNull: false
+    });
   };
+  return Role;
+};
