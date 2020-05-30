@@ -30,6 +30,9 @@ module.exports = function(sequelize, DataTypes) {
         User.hasMany(models.SchoolRole, {
             foreignKey: "userId"
         });
+        User.hasMany(models.Submitted, {
+          foreignKey: "userId"
+      });
     }
   
     return User;
