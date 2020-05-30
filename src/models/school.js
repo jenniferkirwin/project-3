@@ -1,26 +1,26 @@
 module.exports = function(sequelize, DataTypes) {
     const School = sequelize.define("School", {
         schoolId: { 
-            type: Sequelize.UUID, 
+            type: DataTypes.UUID, 
             primaryKey: true, 
-            defaultValue: Sequelize.UUIDV4 
+            defaultValue: DataTypes.UUIDV4 
         },
         schoolName: { 
-            type: Sequelize.STRING, 
-            allowNull: false 
+            type: DataTypes.STRING, 
+            allowNull: false
         },
         primaryColor: { 
-            type: Sequelize.NUMBER, 
-            allowNull: false 
+            type: DataTypes.INTEGER, 
+            allowNull: false
         },
         secondaryColor: { 
-            type: Sequelize.NUMBER, 
-            allowNull: false 
-        },
+            type: DataTypes.INTEGER, 
+            allowNull: false
+        }
     });
 
     School.associate = function(models) {
-        School.hasMany(models.Class, {
+        School.hasMany(models.Course, {
             foreignKey: "schoolId"
         });
     }

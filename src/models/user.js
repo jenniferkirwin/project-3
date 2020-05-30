@@ -1,26 +1,27 @@
 module.exports = function(sequelize, DataTypes) {
     const User = sequelize.define("User", {
         userId: { 
-            type: Sequelize.UUID, 
+            type: DataTypes.UUID, 
             primaryKey: true, 
-            defaultValue: Sequelize.UUIDV4 
+            defaultValue: DataTypes.UUIDV4 
         },
         firstName: { 
-            type: Sequelize.STRING, 
+            type: DataTypes.STRING, 
             allowNull: false 
         },
         lastName: { 
-            type: Sequelize.STRING, 
+            type: DataTypes.STRING, 
             allowNull: false 
         },
         email: { 
-            type: Sequelize.STRING, 
-            allowNull: false 
+            type: DataTypes.STRING, 
+            allowNull: false,
+            unique: true
         },
     });
 
     User.associate = function(models) {
-        User.hasMany(models.Class, {
+        User.hasMany(models.Course, {
             foreignKey: "userId"
         });
         User.hasMany(models.Enrollment, {

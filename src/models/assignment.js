@@ -1,12 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
     const Assignment = sequelize.define("Assignment", {
         assignmentId: { 
-            type: Sequelize.UUID,
+            type: DataTypes.UUID,
             primaryKey: true,
-            defaultValue: Sequelize.UUIDV4 
+            defaultValue: DataTypes.UUIDV4 
         },
         assignmentText: { 
-            type: Sequelize.STRING, 
+            type: DataTypes.STRING, 
             allowNull: false 
         },
     });
@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
         Assignment.hasMany(models.Submitted, {
             foreignKey: "assignmentId"
         });
-        Assignment.belongsTo(models.Class);
+        Assignment.belongsTo(models.Course);
     }
   
     return Assignment;

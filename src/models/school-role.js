@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
     const SchoolRole = sequelize.define("SchoolRole", {
         schoolRoleId: { 
-            type: Sequelize.UUID, 
+            type: DataTypes.UUID, 
             primaryKey: true, 
-            defaultValue: Sequelize.UUIDV4 
+            defaultValue: DataTypes.UUIDV4 
         },
     });
 

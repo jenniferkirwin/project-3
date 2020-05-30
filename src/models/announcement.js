@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Announcement.associate = function(models) {
-        Announcement.belongsTo(models.Class);
+        Announcement.belongsTo(models.Course);
     }
   
     return Announcement;
