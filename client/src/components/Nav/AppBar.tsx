@@ -31,8 +31,6 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import LinksContainer from '../Auth/Links/LinksContainer';
-import { connect } from 'react-redux'
-
 
 const drawerWidth = 240;
 
