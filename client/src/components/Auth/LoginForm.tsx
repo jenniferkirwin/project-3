@@ -1,56 +1,39 @@
-import * as React from "react";
-import { TextField, Button, Card, CardContent } from '@material-ui/core';
-import { Form, Formik } from "formik";
+import React, { Component } from 'react'
 
-interface Values {
-    email: string;
-    password: string
-}
-
-interface Props {
-    onSubmit: (values: Values) => void;
-}
-
-const LoginForm: React.FC <Props> = ({onSubmit}) => {
+class SignIn extends Component {
+  state = {
+    email: '',
+    password: ''
+  }
+  handleChange = (e: any) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
+  handleSubmit = (e: any) => {
+    e.preventDefault();
+    console.log(this.state);
+  }
+  render() {
     return (
-        <Card style={{ backgroundColor: "#cfe3e3" }}> 
-            <CardContent>
-                <h1>Log In</h1>
-                <Formik initialValues={{ email: "", password: "" }} onSubmit={values => {
-                    onSubmit(values);
-                }}>
-                    {({values, handleChange, handleBlur}) => (
-                        <Form>
-                            <div>
-                                <TextField 
-                                    name="email" 
-                                    type="email" 
-                                    placeholder="Email" 
-                                    value={values.email} 
-                                    onChange={handleChange} 
-                                    onBlur={handleBlur}
-                                />
-                            </div>
-                            <div>
-                                <TextField 
-                                    name="password" 
-                                    type="password" 
-                                    placeholder="Password" 
-                                    value={values.password} 
-                                    onChange={handleChange} 
-                                    onBlur={handleBlur}
-                                />
-                            </div>
-                            <br/>
-                            <Button type="submit" variant="contained" color="primary">Log In</Button>
-                        </Form>
-                    )}
-                </Formik>
-            </CardContent>
-        </Card>
-        
+      <div className="container">
+        <form className="white" onSubmit={this.handleSubmit}>
+            <h5 className="grey-text text-darken-3">Sign In</h5>
+            <div className="input-field">
+                <label htmlFor="email">Email</label>
+                <input type="email" id='email' onChange={this.handleChange} />
+            </div>
+            <div className="input-field">
+                <label htmlFor="password">Password</label>
+                <input type="password" id='password' onChange={this.handleChange} />
+            </div>
+            <div className="input-field">
+                <button className="btn pink lighten-1 z-depth-0">Login</button>
+            </div>
+        </form>
+      </div>
     )
+  }
 }
 
-export default LoginForm;
-
+export default SignIn
