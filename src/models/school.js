@@ -10,11 +10,11 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         primaryColor: { 
-            type: DataTypes.INTEGER, 
+            type: DataTypes.STRING, 
             allowNull: false
         },
         secondaryColor: { 
-            type: DataTypes.INTEGER, 
+            type: DataTypes.STRING, 
             allowNull: false
         }
     });

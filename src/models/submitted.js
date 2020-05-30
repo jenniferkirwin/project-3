@@ -17,6 +17,7 @@ module.exports = function(sequelize, DataTypes) {
 
     Submitted.associate = function(models) {
         Submitted.belongsTo(models.Assignment);
+        Submitted.belongsTo(models.User);
     }
   
     return Submitted;
