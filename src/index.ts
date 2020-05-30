@@ -5,6 +5,9 @@ import express from 'express';
 const PORT = process.env.PORT || 3500;
 
 const app = express();
+
+// Express Middleware
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Getting sequelize for database
