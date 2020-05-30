@@ -27,10 +27,21 @@ export default function ClassHoursCard() {
         <Card className={classes.root}>
             <CardContent>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Class Hours
+                    Class Hours Title
+                </Typography>
+                <Typography variant="h5" component="h2">
+                    Name of Student
+                </Typography>
+                <Typography className={classes.pos} color="textSecondary">
+                    Date of meeting
+                </Typography>
+                <Typography variant="body2" component="p">
+                    Description of the meeting
                 </Typography>
             </CardContent>
+            <CardActions>
+                <Button size="small">Confirm meeting?</Button>
+            </CardActions>
         </Card>
-    )
-
+    );
 }
