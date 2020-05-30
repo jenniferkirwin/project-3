@@ -19,3 +19,18 @@ const useStyles = makeStyles({
     },
 });
 
+export default function ClassHoursCard() {
+
+    const classes = useStyles();
+    
+    return (
+        <Card className={classes.root}>
+            <CardContent>
+                <Typography className={classes.title} color="textSecondary" gutterBottom>
+                    Class Hours
+                </Typography>
+            </CardContent>
+        </Card>
+    )
+
+}

@@ -1,12 +1,9 @@
 import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-
+import clsx from 'clsx';
 import Grid from '@material-ui/core/Grid';
-
-import CssBaseline from '@material-ui/core/CssBaseline';
-// import Container from '@material-ui/core/Container';
-import Grid, { GridSpacing } from '@material-ui/core/Grid';
-// import Paper from '@material-ui/core/Paper';
+import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
 import SimpleCard from '../Card/index';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -15,11 +12,26 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 2,
     },
     paper: {
-      height: 140,
-      width: 100,
+      padding: theme.spacing(2),
+      display: 'flex',
+      overflow: 'auto',
+      flexDirection: 'column',
     },
     control: {
       padding: theme.spacing(2),
+    },
+    appBarSpacer: theme.mixins.toolbar,
+    content: {
+      flexGrow: 1,
+      height: '100vh',
+      overflow: 'auto',
+    },
+    container: {
+      paddingTop: theme.spacing(4),
+      paddingBottom: theme.spacing(4),
+    },
+    fixedHeight: {
+      height: 240,
     },
   }),
 );
@@ -38,68 +50,34 @@ export default function LandingGrid() {
 
 
   return (
-    <React.Fragment>
-      <CssBaseline />
+    <div>
 
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            
+
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
                 <SimpleCard />
               </Paper>
             </Grid>
-            
-            <Grid item xs={12} md={4} lg={3}>
+
+            <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
                 <SimpleCard />
               </Paper>
             </Grid>
-            
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
+
+            <Grid item xs={12} md={8} lg={9}>
+              <Paper className={fixedHeightPaper}>
                 <SimpleCard />
               </Paper>
-
-          <Grid container className={classes.root} spacing={4}>
-            <Grid item lg={12}>
-              <Grid container justify="center" spacing={spacing}>
-                {[0, 1, 2].map((value) => (
-                  <Grid key={value} item>
-                    <SimpleCard />
-                  </Grid>
-                ))}
-              </Grid>
             </Grid>
           </Grid>
+        </Container>
+      </main>
 
-        <Grid container className={classes.root} spacing={4}>
-          <Grid item lg={12}>
-            <Grid container justify="center" spacing={spacing}>
-              {[0, 1, 2].map((value) => (
-                <Grid key={value} item>
-                  <SimpleCard />
-                </Grid>
-              ))}
-            </Grid>
-          </Grid>
-        </Grid>
-
-        <Grid container className={classes.root} spacing={4}>
-          <Grid item lg={12}>
-            <Grid container justify="center" spacing={spacing}>
-              {[0, 1, 2].map((value) => (
-                <Grid key={value} item>
-                  <SimpleCard />
-                </Grid>
-              ))}
-
-            </Grid>
-          </Grid>
-        </Grid>
-
-    </React.Fragment>
+    </div>
   );
 }
