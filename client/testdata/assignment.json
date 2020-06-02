@@ -1,0 +1,17 @@
+[
+  {
+    "assignmentId": "1",
+    "assignmentText": "An Assignment #1 Text",
+    "courseId": "1"
+  },
+  {
+    "assignmentId": "2",
+    "assignmentText": "An Assignment #2 Text",
+    "courseId": "1"
+  },
+  {
+    "assignmentId": "3",
+    "assignmentText": "An Assignment #3 Text",
+    "courseId": "2"
+  }
+]

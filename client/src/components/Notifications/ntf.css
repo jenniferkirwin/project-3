@@ -1,0 +1,65 @@
+.displayTopleft{
+    position:absolute;
+    left:0;
+    top:0
+}
+.displayTopright{
+    position:absolute;
+    right:0;
+    top:0
+}
+.displayBottomleft{
+    position:absolute;
+    left:0;
+    bottom:0
+}
+.displayBottomright{
+        position:absolute;right:0;bottom:0
+    }
+.displayMiddle{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%)
+}
+.displayLeft{
+    position:absolute;
+    top:50%;
+    left:0%;
+    transform:translate(0%,-50%);
+    -ms-transform:translate(-0%,-50%)
+}
+.displayRight{
+    position:absolute;
+    top:50%;
+    right:0%;
+    transform:translate(0%,-50%);
+    -ms-transform:translate(0%,-50%)
+}
+.displayTopmiddle{
+    position:absolute;
+    left:50%;
+    top:0;
+    transform:translate(-50%,0%);
+    -ms-transform:translate(-50%,0%) 
+}
+.displayBottommiddle { 
+    position:absolute;
+    left:50%;
+    bottom:0;
+    transform:translate(-50%,0%);
+    -ms-transform:translate(-50%,0%) 
+}
+.displayContainer:hover .displayHover{
+    display:block 
+}
+    .displayContainer:hover span.displayHover 
+    {display:inline-block}
+    .display-hover { 
+        display:none 
+    }
+.displayPosition 
+{
+    position:absolute
+}
