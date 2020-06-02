@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import StudentCard from "../studentCards/studentCards";
 import Calender from "../Calender/Calender";
 import Typography from "@material-ui/core/Typography";
-import Nav from "../Nav/Nav";
+// import Nav from "../Nav/AppBar";
 import Notifications from "../Notifications" ;
 
 

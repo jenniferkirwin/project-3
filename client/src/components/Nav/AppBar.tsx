@@ -22,8 +22,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import HomeIcon from '@material-ui/icons/Home';
 import GradeIcon from '@material-ui/icons/Grade';
@@ -157,7 +155,7 @@ const menuItems = [
   {
     listIcon: <HomeIcon />,
     listText: "Home",
-    listPath: "/"
+    listPath: "/",
   },
   {
     listIcon: <AssignmentIcon />,
@@ -174,6 +172,21 @@ const menuItems = [
     listText: "Calendar",
     listPath: "/calendar",
   },
+  {
+    listIcon: <HomeIcon />,
+    listText: "Teacher Home",
+    listPath: "/teachhome",
+  },
+  {
+    listIcon: <AssignmentIcon />,
+    listText: "Teacher Assignments Page",
+    listPath: "/teachassignment",
+  },
+  {
+    listIcon: <GradeIcon />,
+    listText: "Teacher Grade View",
+    listPath: "/teachgrade",
+  }
 ]
 
 type TParams = { id: string };
@@ -248,21 +261,12 @@ export default function SearchAppBar() {
         </div>
         <Divider />
         <List>
-          {/* {menuItems.map((lsItem, key) => (
+          {menuItems.map((lsItem, key) => (
             <ListItem button key={key} component={Link} to={lsItem.listPath}>
               <ListItemIcon className={classes.listItem}>
                 {lsItem.listIcon}
               </ListItemIcon>
               <ListItemText className={classes.listItem} primary={lsItem.listText} />
-            </ListItem>
-          ))} */}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
             </ListItem>
           ))}
         </List>
