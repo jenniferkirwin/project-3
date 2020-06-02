@@ -12,12 +12,12 @@ class SignUp extends Component {
     firstName: '',
     lastName: '',
   }
-  handleChange = (e: any) => {
+  handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
     })
   }
-  handleSubmit = (e: any) => {
+  handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
   }
@@ -27,7 +27,7 @@ class SignUp extends Component {
             <form className="white" onSubmit={this.handleSubmit}>
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
-                        <h5 className="grey-text text-darken-3">Sign Up</h5>
+                        <h5 className="grey-text text-darken-3">Create Account</h5>
                     </Grid>
                     <Grid item xs={6}>
                         <div className="input-field">
