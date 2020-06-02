@@ -57,7 +57,7 @@ export default function StudentHome() {
     { title: 'event 5', date: '2020-06-03', url: "2020-06-03"}
   ]
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={{paddingTop: 100}}>
     <Box> 
       <Grid container  spacing={1}  > 
         <Grid  item xs={12}  sm={6}> 

@@ -20,8 +20,8 @@ const SignIn = ({ history }) => {
     [history]
   );
 
+  //Redirect to homepage if there is already a user signed in
   const { currentUser } = useContext(AuthContext);
-
   if (currentUser) {
     return <Redirect to="/" />;
   }
@@ -39,7 +39,7 @@ const SignIn = ({ history }) => {
           <input type="password" id='password' />
         </div>
         <div className="input-field">
-          <button className="btn pink lighten-1 z-depth-0">Login</button>
+          <button className="btn waves-effect waves-light lighten-1 z-depth-0">Login</button>
         </div>
       </form>
     </div>

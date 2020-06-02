@@ -9,9 +9,13 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [pending, setPending] = useState(true);
 
-  //Hook
   useEffect(() => {
     app.auth().onAuthStateChanged((user) => {
+      if (user) {
+        user.getIdTokenResult(true).then(idTokenResult => {
+          console.log(`User Email: ${idTokenResult.claims.email}`);
+        });
+      }
       setCurrentUser(user)
       setPending(false)
     });
