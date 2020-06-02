@@ -1,0 +1,20 @@
+[
+  {
+    "courseId": "1",
+    "courseName": "Course Title #1",
+    "schoolId": "1",
+    "userId": "1"
+  },
+  {
+    "courseId": "2",
+    "courseName": "Course Title #2",
+    "schoolId": "1",
+    "userId": "1"
+  },
+  {
+    "courseId": "3",
+    "courseName": "Course Title #3",
+    "schoolId": "2",
+    "userId": "2"
+  }
+]
