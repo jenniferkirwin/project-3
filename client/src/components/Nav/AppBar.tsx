@@ -154,17 +154,17 @@ const useStyles = makeStyles((theme: Theme) =>
 const menuItems = [
   {
     listIcon: <HomeIcon />,
-    listText: "Home",
+    listText: "Student Home",
     listPath: "/",
   },
   {
     listIcon: <AssignmentIcon />,
-    listText: "Assignments",
+    listText: "Student Assignments",
     listPath: "/assignments",
   },
   {
     listIcon: <GradeIcon />,
-    listText: "Grades",
+    listText: "Student Grades",
     listPath: "/grades",
   },
   {
@@ -179,7 +179,7 @@ const menuItems = [
   },
   {
     listIcon: <AssignmentIcon />,
-    listText: "Teacher Assignments Page",
+    listText: "Teacher Assignments",
     listPath: "/teachassignment",
   },
   {
@@ -226,24 +226,12 @@ export default function SearchAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Dashboard
+            School Management System
           </Typography>
           <LinksContainer />
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-        </Toolbar>
+        </Toolbar> 
       </AppBar>
+
       <Drawer
         className={classes.drawer}
         variant="persistent"

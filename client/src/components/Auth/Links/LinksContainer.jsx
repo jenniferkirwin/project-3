@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
+import { AuthContext } from "./../auth.js";
 
 const LinksContainer = () => {
-  return (
-    <div>
+  const { currentUser } = useContext(AuthContext);
+  if (currentUser) {
+    return (
+      <div>
         <SignedInLinks/>
+      </div>
+    )
+  } else {
+    return (
+      <div>
         <SignedOutLinks/>
-    </div>
-  )
+      </div>
+    )
+  }
 }
 
 

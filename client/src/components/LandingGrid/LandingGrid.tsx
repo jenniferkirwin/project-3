@@ -50,7 +50,7 @@ export default function LandingGrid() {
 
 
   return (
-    <div>
+    <div style={{paddingTop: 100}}>
 
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />

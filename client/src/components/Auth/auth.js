@@ -11,6 +11,11 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     app.auth().onAuthStateChanged((user) => {
+      if (user) {
+        user.getIdTokenResult(true).then(idTokenResult => {
+          console.log(`User Email: ${idTokenResult.claims.email}`);
+        });
+      }
       setCurrentUser(user)
       setPending(false)
     });
