@@ -8,24 +8,20 @@ import Select from '@material-ui/core/Select';
 import app from "./../../config/fbConfig.js";
 import { AuthContext } from "./auth.js";
 
-
-
 const SignUp = ({ history }) => {
     const handleSignUp = useCallback(async event => {
       event.preventDefault();
       const { email, password } = event.target.elements;
       try {
-        await app
-          .auth()
-          .createUserWithEmailAndPassword(email.value, password.value);
+        await app.auth().createUserWithEmailAndPassword(email.value, password.value);
         history.push("/");
       } catch (error) {
         alert(error);
       }
     }, [history]);
 
+    //Redirect to homepage if there is already a user signed in
     const { currentUser } = useContext(AuthContext);
-
     if (currentUser) {
         return <Redirect to="/" />;
     }
@@ -82,7 +78,7 @@ const SignUp = ({ history }) => {
                     </Grid>
                     <Grid item xs={12}>
                         <div>
-                            <button className="btn pink lighten-1 z-depth-0">Create Account</button>
+                            <button className="btn waves-effect waves-light lighten-1 z-depth-0">Create Account</button>
                         </div>
                     </Grid>
                 </Grid>
