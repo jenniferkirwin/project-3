@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -27,12 +28,13 @@ import HomeIcon from '@material-ui/icons/Home';
 import GradeIcon from '@material-ui/icons/Grade';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import GradesPage from '../../GradesPage';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        root:{
+        root: {
             flexGrow: 1,
         },
         menuButton: {
@@ -146,8 +148,26 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
+const menuItems = [
+    {
+        listIcon: <HomeIcon />,
+        listText: "Home",
+        listPath: "/teachhome",
+    },
+    {
+        listIcon: <AssignmentIcon />,
+        listText: "Assignments",
+        listPath: "/teachassignment",
+    },
+    {
+        listIcon: <GradeIcon />,
+        listText: "Grades",
+        listPath: "/teachgrade",
+    }
+]
+
 export default function TeacherAppBar() {
-    
+
     const classes = useStyles();
 
     const theme = useTheme();
@@ -215,19 +235,12 @@ export default function TeacherAppBar() {
                 </div>
                 <Divider />
                 <List>
-                    {['Home', 'Assignments'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <HomeIcon /> : <AssignmentIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
-                <Divider />
-                <List>
-                    {['Grades', 'Calendar'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <GradeIcon /> : <CalendarTodayIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
+                    {menuItems.map((lsItem, key) => (
+                        <ListItem button key={key} component={Link} to={lsItem.listPath}>
+                            <ListItemIcon className={classes.listItem}>
+                                {lsItem.listIcon}
+                            </ListItemIcon>
+                            <ListItemText className={classes.listItem} primary={lsItem.listText} />
                         </ListItem>
                     ))}
                 </List>

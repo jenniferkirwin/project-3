@@ -19,28 +19,22 @@ const useStyles = makeStyles({
     },
 });
 
-export default function ClassHoursCard() {
+export default function GradesCard() {
 
     const classes = useStyles();
-    
+
     return (
         <Card className={classes.root}>
             <CardContent>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Class Hours Title
+                    Overall Grade
                 </Typography>
                 <Typography variant="h5" component="h2">
                     Name of Student
                 </Typography>
-                <Typography className={classes.pos} color="textSecondary">
-                    Date of meeting
-                </Typography>
-                <Typography variant="body2" component="p">
-                    Description of the meeting
-                </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Confirm meeting?</Button>
+                <Button size="small">Full list of grades</Button>
             </CardActions>
         </Card>
     );
