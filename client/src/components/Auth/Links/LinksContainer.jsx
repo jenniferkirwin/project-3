@@ -3,7 +3,8 @@ import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 import { connect } from 'react-redux'
 
-const LinksContainer = () => {
+const LinksContainer = (props) => {
+  const { auth } = props;
   return (
     <div>
         <SignedInLinks/>
@@ -12,11 +13,11 @@ const LinksContainer = () => {
   )
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state) => {
     console.log(state);
     return{
         auth: state.firebase.auth
     }
   }
 
-  export default connect(mapStateToProps)(LinksContainer)
+  export default LinksContainer

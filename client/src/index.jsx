@@ -10,20 +10,26 @@ import thunk from 'redux-thunk'
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 import fbConfig from './config/fbConfig'
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
 
 /*const store = createStore(rootReducer,
   compose(
     applyMiddleware(thunk.withExtraArgument(getFirebase)),
     reactReduxFirebase(fbConfig) // redux binding for firebase
   )
-);*/
+);
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
     </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);*/
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
