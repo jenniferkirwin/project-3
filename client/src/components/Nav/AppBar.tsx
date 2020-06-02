@@ -30,7 +30,7 @@ import GradeIcon from '@material-ui/icons/Grade';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import LinksContainer from '../Auth/Links/LinksContainer';
+import LinksContainer from '../Auth/Links/LinksContainer.jsx';
 
 const drawerWidth = 240;
 
