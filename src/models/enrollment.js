@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     enrollmentId: {
       type: DataTypes.UUID,
       primaryKey: true,
-      defaultValue: UUIDV4
+      defaultValue: DataTypes.UUIDV4
     }
   }, {});
   Enrollment.associate = function(models) {

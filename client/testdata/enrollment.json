@@ -1,0 +1,17 @@
+[
+  {
+    "enrollmentId": "1",
+    "courseId": "1",
+    "userId": "1"
+  },
+  {
+    "enrollmentId": "2",
+    "courseId": "1",
+    "userId": "2"
+  },
+  {
+    "enrollmentId": "3",
+    "courseId": "1",
+    "userId": "3"
+  }
+]

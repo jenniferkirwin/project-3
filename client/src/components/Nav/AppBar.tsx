@@ -27,8 +27,8 @@ import HomeIcon from '@material-ui/icons/Home';
 import GradeIcon from '@material-ui/icons/Grade';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import SignedInLinks from '../Auth/SignedInLinks';
-import SignedOutLinks from '../Auth/SignedOutLinks';
+
+import LinksContainer from '../Auth/Links/LinksContainer.jsx';
 
 const drawerWidth = 240;
 
@@ -228,8 +228,7 @@ export default function SearchAppBar() {
           <Typography variant="h6" noWrap>
             Dashboard
           </Typography>
-          <SignedInLinks />
-          <SignedOutLinks />
+          <LinksContainer />
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
