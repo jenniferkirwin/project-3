@@ -15,8 +15,15 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Getting sequelize for database
+// Getting sequelize for database and initializing
 const db = require('./models');
+db.sequelize.sync();
+
+// db.User.create({
+//   firstName: "Bruce2",
+//   lastName: "Wayne2",
+//   email: "iamdark222@bats.com"
+// })
 
 // Functions
 // ---------------------------------------------------------------------------
