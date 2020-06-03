@@ -19,11 +19,12 @@ app.use(express.json());
 const db = require('./models');
 db.sequelize.sync();
 
-// db.User.create({
-//   firstName: "Bruce2",
-//   lastName: "Wayne2",
-//   email: "iamdark222@bats.com"
-// })
+// For Express Routes
+const studentRoutes = require('./routes/student-routes');
+const teacherRoutes = require('./routes/teacher-routes');
+
+app.use('/student', studentRoutes);
+app.use('/teacher', teacherRoutes);
 
 // Functions
 // ---------------------------------------------------------------------------
