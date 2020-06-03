@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import clsx from 'clsx';
 import {
   BrowserRouter as Router,
@@ -27,7 +27,11 @@ import HomeIcon from '@material-ui/icons/Home';
 import GradeIcon from '@material-ui/icons/Grade';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import LinksContainer from '../Auth/Links/LinksContainer.jsx';
+import SignedInLinks from './../Auth/Links/SignedInLinks.jsx'
+import SignedOutLinks from './../Auth/Links/SignedOutLinks.jsx'
+import { AuthContext } from "./../Auth/auth.js";
+import { NavLink } from 'react-router-dom'
+
 
 
 const drawerWidth = 240;
@@ -211,58 +215,84 @@ export default function SearchAppBar() {
     setOpen(false);
   };
 
-  return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
+  const { currentUser } = useContext(AuthContext);
+  if (currentUser) {
+    return (
+        <div className={classes.root}>
+          <CssBaseline />
+          <AppBar
+            position="fixed"
+            className={clsx(classes.appBar, {
+              [classes.appBarShift]: open,
+            })}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            School Management System
-          </Typography>
-          <LinksContainer />
-        </Toolbar> 
-      </AppBar>
-
-      <Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="left"
-        open={open}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
+            <Toolbar>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                className={clsx(classes.menuButton, open && classes.hide)}
+              >
+                <MenuIcon />
+              </IconButton>
+              <NavLink activeStyle={{color: 'white', textDecoration: 'none'}} to='/'>
+                <Typography variant="h6" noWrap>
+                  School Management System
+                </Typography>
+              </NavLink>
+              <SignedInLinks />
+            </Toolbar> 
+          </AppBar>
+    
+          <Drawer
+            className={classes.drawer}
+            variant="persistent"
+            anchor="left"
+            open={open}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+          >
+            <div className={classes.drawerHeader}>
+              <IconButton onClick={handleDrawerClose}>
+                {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+              </IconButton>
+            </div>
+            <Divider />
+            <List>
+              {menuItems.map((lsItem, key) => (
+                <ListItem button key={key} component={Link} to={lsItem.listPath}>
+                  <ListItemIcon className={classes.listItem}>
+                    {lsItem.listIcon}
+                  </ListItemIcon>
+                  <ListItemText className={classes.listItem} primary={lsItem.listText} />
+                </ListItem>
+              ))}
+            </List>
+          </Drawer>
         </div>
-        <Divider />
-        <List>
-          {menuItems.map((lsItem, key) => (
-            <ListItem button key={key} component={Link} to={lsItem.listPath}>
-              <ListItemIcon className={classes.listItem}>
-                {lsItem.listIcon}
-              </ListItemIcon>
-              <ListItemText className={classes.listItem} primary={lsItem.listText} />
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-    </div>
-  );
+      ); 
+   } else {
+    return (
+      <div className={classes.root}>
+        <CssBaseline />
+        <AppBar
+          position="fixed"
+          className={clsx(classes.appBar, {
+            [classes.appBarShift]: open,
+          })}
+        >
+          <Toolbar>
+            <NavLink activeStyle={{color: 'white', textDecoration: 'none'}} to='/'>
+              <Typography variant="h6" noWrap>
+                School Management System
+              </Typography>
+            </NavLink>
+            <SignedOutLinks />
+          </Toolbar> 
+        </AppBar>
+      </div>
+    ); 
+   }
 }

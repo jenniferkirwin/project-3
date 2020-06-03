@@ -15,7 +15,7 @@ const SignedInLinks = () => {
             <Grid item xs={6}>
               <NavLink to='/createaccount'>
                 <button 
-                  className="btn waves-effect waves-light btn-small amber lighten-1 z-depth-0"
+                  className="btn waves-effect waves-light btn-small amber darken-1 z-depth-0"
                   style={{width: 175}}
                 >
                   Create Account
@@ -26,7 +26,7 @@ const SignedInLinks = () => {
             <Grid item xs={6}>
               <NavLink to='/login'>
                 <button 
-                  className="btn waves-effect waves-light btn-small green accent-2 z-depth-0"
+                  className="btn waves-effect waves-light btn-small green loghten-1 z-depth-0"
                   style={{width: 175}}
                 >
                   Log In
