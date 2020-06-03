@@ -1,7 +1,5 @@
 import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
 import app from "./../../../config/fbConfig.js";
-import Grid from '@material-ui/core/Grid';
 import { AuthContext } from "./../auth.js";
 
 

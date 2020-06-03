@@ -26,10 +26,10 @@ const SignUp = ({ history }) => {
         }
     }, [history]);
 
-    //Redirect to login form if there is no user signed in
+    //Redirect home if user is signed in
     const { currentUser } = useContext(AuthContext);
-    if (!currentUser) {
-        return <Redirect to="/login" />;
+    if (currentUser) {
+        return <Redirect to="/" />;
     } else {
         return (
             <div className="container">

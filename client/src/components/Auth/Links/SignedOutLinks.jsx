@@ -7,7 +7,7 @@ import { AuthContext } from "./../auth.js";
 
 const SignedInLinks = () => {
   const { currentUser } = useContext(AuthContext);
-  if (currentUser) {
+  if (!currentUser) {
     return (
       <div>
           <Grid container spacing={3}>
