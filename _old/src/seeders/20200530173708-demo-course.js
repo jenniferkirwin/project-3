@@ -1,27 +1,27 @@
 'use strict';
 
-module.exports = {
-  up: (queryInterface, Sequelize) => {
-      return queryInterface.bulkInsert("Courses", [
-      {
-        courseName: "Herbology",
-      },
-      {
-        courseName: "Biology",
-      },
-      {
-        courseName: "History",
-      },
-      {
-        courseName: "Chemistry",
-      },
-      {
-        courseName: "Astronomy",
-      }
-    ], {});
+const courseSeeds = [
+  {
+    courseName: "Herbology",
   },
-
-  down: (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete("Courses", null, {});
+  {
+    courseName: "Biology",
+  },
+  {
+    courseName: "History",
+  },
+  {
+    courseName: "Chemistry",
+  },
+  {
+    courseName: "Astronomy",
   }
+];
+
+module.exports = function seedCourses() {
+  return courseSeeds.forEach( (course) => {
+    db.Course.create({
+      courseName: course.courseName,
+    })
+  });
 };
