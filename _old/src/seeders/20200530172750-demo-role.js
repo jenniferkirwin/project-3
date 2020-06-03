@@ -1,21 +1,21 @@
 'use strict';
 
-module.exports = {
-  up: (queryInterface, Sequelize) => {
-      return queryInterface.bulkInsert("Roles", [
-        {
-          roleName: "Student",
-        },
-        {
-          roleName: "Teacher",
-        },
-        {
-          roleName: "Admin",
-        },
-      ], {});
+const roleSeeds = [
+  {
+    roleName: "Student",
   },
+  {
+    roleName: "Teacher",
+  },
+  {
+    roleName: "Admin",
+  },
+]
 
-  down: (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete("Roles", null, {});
-  }
-};
+module.exports = function seedRoles() {
+  return roleSeeds.forEach( (role) => {
+    db.Role.create({
+      roleName: role.roleName,
+    })
+  });
+}
