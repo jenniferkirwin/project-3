@@ -1,6 +1,33 @@
+// Dependencies
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Firebase Application
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
+
+// Express
+const express = require('express');
+
+const app = express();
+
+// Express Middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Getting sequelize for database and initializing
+const db = require('./models');
+db.sequelize.sync();
+
+// db.User.create({
+//   firstName: "Bruce2",
+//   lastName: "Wayne2",
+//   email: "iamdark222@bats.com"
+// })
+
+// Functions
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 exports.createUser =functions.https.onCall((data, context) => {
 
@@ -22,3 +49,5 @@ exports.createUser =functions.https.onCall((data, context) => {
         });
     })    
 });
+
+exports.app = functions.https.onRequest(app);

@@ -152,6 +152,11 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const menuItems = [
   {
+    listIcon: <CalendarTodayIcon />,
+    listText: "Calendar",
+    listPath: "/calendar",
+  },
+  {
     listIcon: <HomeIcon />,
     listText: "Student Home",
     listPath: "/",
