@@ -5,6 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import assignment from '../assignment.json';
 
 const useStyles = makeStyles({
     root: {
@@ -24,6 +25,8 @@ const useStyles = makeStyles({
     },
 });
 
+
+
 export default function TeacherAssignmentCard() {
     
     const classes = useStyles();
@@ -33,7 +36,7 @@ export default function TeacherAssignmentCard() {
         <Card className={classes.root}>
             <CardContent>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Assignment Title
+                    Title
                 </Typography>
                 <Typography variant="h5" component="h2">
                     {bull} Description of assigment
