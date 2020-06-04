@@ -30,25 +30,21 @@ app.use('/teacher', teacherRoutes);
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-exports.createUser =functions.https.onCall((data, context) => {
+exports.createUser = functions.https.onRequest((req, res) => {
 
-    //Create User
-    return admin.auth().createUser({
-        email: data.email,
-        emailVerified: false,
-        password: data.password,
-        disabled: false
-    }).then((userRecord) => {
-        admin.auth().setCustomUserClaims(userRecord.uid, {
-            role: data.role
-        }).then(() => {
-            return {
-              message: `${data.email} has has been added with a ${data.user} role.`
-            }
-        }).catch(err => {
-            return err;
-        });
-    })    
+    const body = JSON.parse(req.body);
+
+    return admin.auth().setCustomUserClaims(body.uid, {
+        role: body.role,
+    }).then(() => {
+        return {
+          message: `User [${body.uid}] has been given role: ${body.role}.`
+        }
+      }).catch(err => {
+        return err;
+      });
+    
+
 });
 
 exports.app = functions.https.onRequest(app);

@@ -14,11 +14,25 @@ const SignUp = ({ history }) => {
     const handleSignUp = useCallback(async event => {
         event.preventDefault();
         const { email, password, role, school } = event.target.elements;
-            console.log(email.value, password.value, role.value, school.value);
+            //console.log(email.value, password.value, role.value, school.value);
+            let roleClaim = role.value
+            console.log(role.Claim);
         try {
-            //const sayHello = firebase.functions().httpsCallable('sayHello');
             await app.auth().createUserWithEmailAndPassword(email.value, password.value).then(cred => {
-                console.log(cred.user.uid);
+                let uid = cred.user.uid;
+                    console.log(uid);
+                const fURL = `https://us-central1-user-management-system-2020.cloudfunctions.net/createUser`;
+                const fetchOptions = {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        'uid': uid,
+                        'role': roleClaim,
+                    })
+                };
+                fetch(fURL, fetchOptions).then(function () {
+                    console.log(`added ${roleClaim} role to user ${uid}`);
+                });
+                return false;
             });
             history.push("/");
         } catch (error) {
