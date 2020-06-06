@@ -12,7 +12,10 @@ const userController = require('../controllers/user-controller');
 
 router
   .route('/')
-  .post(userController.createUser)
-  .get(userController.findSchool)
+  .post(userController.createUser);
+
+router
+  .route('/:id')
+  .get(userController.findUser)
 
 module.exports = router;

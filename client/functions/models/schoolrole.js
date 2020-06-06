@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   SchoolRole.associate = function(models) {
     SchoolRole.belongsTo(models.User);
     SchoolRole.belongsTo(models.Role);
+    SchoolRole.belongsTo(models.School);
   };
   return SchoolRole;
 };

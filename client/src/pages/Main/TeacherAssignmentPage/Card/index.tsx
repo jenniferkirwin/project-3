@@ -36,10 +36,14 @@ export default function TeacherAssignmentCard() {
         <Card className={classes.root}>
             <CardContent>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Title
+                    {assignment.map((assignmentDetail, index) => {
+                        return <h1>{assignmentDetail.assignmentId}</h1>
+                    })}
                 </Typography>
                 <Typography variant="h5" component="h2">
-                    {bull} Description of assigment
+                    {assignment.map((assignmentDetail, index) => {
+                        return <h2>{assignmentDetail.assignmentText}</h2>
+                    })}
                 </Typography>
                 <Typography className={classes.pos} color="textSecondary">
                     Due Date 

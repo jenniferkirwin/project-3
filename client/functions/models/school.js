@@ -23,6 +23,9 @@ module.exports = (sequelize, DataTypes) => {
     School.hasMany(models.Course, {
       allowNull: false
     });
+    School.hasMany(models.SchoolRole, {
+      allowNull: false
+    });
   };
   return School;
 };
