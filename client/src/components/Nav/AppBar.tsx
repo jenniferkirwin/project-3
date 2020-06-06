@@ -31,6 +31,7 @@ import SignedInLinks from './../Auth/Links/SignedInLinks.jsx'
 import SignedOutLinks from './../Auth/Links/SignedOutLinks.jsx'
 import { AuthContext } from "./../Auth/auth.js";
 import { NavLink } from 'react-router-dom'
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
 
 
@@ -219,7 +220,7 @@ export default function SearchAppBar() {
         {
           listIcon: <HomeIcon />,
           listText: "Student Home",
-          listPath: "/",
+          listPath: "/student-home",
         },
         {
           listIcon: <AssignmentIcon />,
@@ -251,7 +252,7 @@ export default function SearchAppBar() {
           listPath: "/teacher-grades",
         },
         {
-          listIcon: <GradeIcon />,
+          listIcon: <AccessTimeIcon />,
           listText: "Teacher Class Hours",
           listPath: "/teacher-class-hours",
         }
