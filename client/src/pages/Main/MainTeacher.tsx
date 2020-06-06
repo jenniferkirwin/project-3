@@ -116,22 +116,22 @@ const menuItems = [
     {
         listIcon: <HomeIcon />,
         listText: "Home",
-        listPath: "/home",
+        listPath: "/teachhome",
     },
     {
         listIcon: <AssignmentIcon />,
         listText: "Assignments",
-        listPath: "/assignments",
+        listPath: "/teachassignments",
     },
     {
         listIcon: <GradeIcon />,
         listText: "Grades",
-        listPath: "/studentgrades",
+        listPath: "/teachgrades",
     },
     {
         listIcon: <ClassIcon />,
         listText: "Classes",
-        listPath: "/classes"
+        listPath: "/teachclasses"
     }
 ]
 
