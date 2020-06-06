@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import app from "./../../config/fbConfig.js";
 
+
+
 //Propagate auth data through whole react component tree
 export const AuthContext = React.createContext();
 
