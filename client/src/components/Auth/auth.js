@@ -15,8 +15,9 @@ export const AuthProvider = ({ children }) => {
     app.auth().onAuthStateChanged((user) => {
       if (user) {
         user.getIdTokenResult(true).then(idTokenResult => {
-          console.log(`User Email: ${idTokenResult.claims.email}`);
-          console.log(`User Role: ${idTokenResult.claims.role}`);
+          let userEmail = idTokenResult.claims.email;
+            console.log(`User Email: ${userEmail}`);
+          //console.log(`User Role: ${idTokenResult.claims.role}`);
         });
       }
       setCurrentUser(user)

@@ -6,6 +6,7 @@ import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import SimpleCard from '../Card/index';
 
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
+
 export default function LandingGrid() {
 
   const classes = useStyles();
@@ -51,7 +53,6 @@ export default function LandingGrid() {
 
   return (
     <div style={{paddingTop: 100}}>
-
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>

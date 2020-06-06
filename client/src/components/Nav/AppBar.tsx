@@ -155,12 +155,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const menuItems = [
-  {
-    listIcon: <CalendarTodayIcon />,
-    listText: "Calendar",
-    listPath: "/calendar",
-  },
+let menuItems = [
   {
     listIcon: <HomeIcon />,
     listText: "Student Home",
@@ -196,12 +191,109 @@ const menuItems = [
     listText: "Teacher Grade View",
     listPath: "/teachgrade",
   }
-]
+];
+
+let userEmail = "";
+let greetingString;
 
 type TParams = { id: string };
 
 export default function SearchAppBar() {
   const classes = useStyles();
+
+  const { currentUser } = useContext(AuthContext);
+  //Set the greeting string
+  if (currentUser) {
+    userEmail = currentUser.email;
+    greetingString = `Welcome, ${userEmail}`;
+    console.log(userEmail);
+  } else {
+    greetingString = `Welcome to Skooled! Please Sign In or Create an Account`; 
+  }
+  //Set the sidebar menu items
+  switch(userEmail) {
+    case "studentuser.skooled@gmail.com":
+      menuItems = [
+        {
+          listIcon: <HomeIcon />,
+          listText: "Student Home",
+          listPath: "/",
+        },
+        {
+          listIcon: <AssignmentIcon />,
+          listText: "Student Assignments",
+          listPath: "/assignments",
+        },
+        {
+          listIcon: <GradeIcon />,
+          listText: "Student Grades",
+          listPath: "/grades",
+        }
+      ];
+      break;
+    case "teacheruser.skooled@gmail.com":
+      menuItems = [
+        {
+          listIcon: <CalendarTodayIcon />,
+          listText: "Calendar",
+          listPath: "/calendar",
+        },
+        {
+          listIcon: <HomeIcon />,
+          listText: "Teacher Home",
+          listPath: "/teachhome",
+        },
+        {
+          listIcon: <AssignmentIcon />,
+          listText: "Teacher Assignments",
+          listPath: "/teachassignment",
+        },
+        {
+          listIcon: <GradeIcon />,
+          listText: "Teacher Grade View",
+          listPath: "/teachgrade",
+        }
+      ];
+      break;
+    default:
+      menuItems = [
+        {
+          listIcon: <HomeIcon />,
+          listText: "Student Home",
+          listPath: "/",
+        },
+        {
+          listIcon: <AssignmentIcon />,
+          listText: "Student Assignments",
+          listPath: "/assignments",
+        },
+        {
+          listIcon: <GradeIcon />,
+          listText: "Student Grades",
+          listPath: "/grades",
+        },
+        {
+          listIcon: <CalendarTodayIcon />,
+          listText: "Calendar",
+          listPath: "/calendar",
+        },
+        {
+          listIcon: <HomeIcon />,
+          listText: "Teacher Home",
+          listPath: "/teachhome",
+        },
+        {
+          listIcon: <AssignmentIcon />,
+          listText: "Teacher Assignments",
+          listPath: "/teachassignment",
+        },
+        {
+          listIcon: <GradeIcon />,
+          listText: "Teacher Grade View",
+          listPath: "/teachgrade",
+        }
+      ];
+  } 
 
   const theme = useTheme();
 
@@ -215,7 +307,6 @@ export default function SearchAppBar() {
     setOpen(false);
   };
 
-  const { currentUser } = useContext(AuthContext);
   if (currentUser) {
     return (
         <div className={classes.root}>
@@ -238,7 +329,7 @@ export default function SearchAppBar() {
               </IconButton>
               <NavLink activeStyle={{color: 'white', textDecoration: 'none'}} to='/'>
                 <Typography variant="h6" noWrap>
-                  School Management System
+                  { greetingString }
                 </Typography>
               </NavLink>
               <SignedInLinks />
@@ -286,7 +377,7 @@ export default function SearchAppBar() {
           <Toolbar>
             <NavLink activeStyle={{color: 'white', textDecoration: 'none'}} to='/'>
               <Typography variant="h6" noWrap>
-                School Management System
+                { greetingString }
               </Typography>
             </NavLink>
             <SignedOutLinks />
