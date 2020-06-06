@@ -19,7 +19,7 @@ const db = require('./models');
 db.sequelize.sync();
 
 // Seeding database
-// const seeder = require('./seeders/20200530173135-demo-school');
+// const seeder = require('./seeders/20200530172750-demo-role');
 // seeder();
 
 
