@@ -194,6 +194,7 @@ let menuItems = [
 ];
 
 let userEmail = "";
+let userUID = "";
 let greetingString;
 
 type TParams = { id: string };
@@ -205,13 +206,15 @@ export default function SearchAppBar() {
   //Set the greeting string
   if (currentUser) {
     userEmail = currentUser.email;
+    userUID = currentUser.uid;
+      console.log(userUID);
     greetingString = `Welcome, ${userEmail}`;
   } else {
     greetingString = `Welcome to Skooled! Please Sign In or Create an Account`; 
   }
   //Set the sidebar menu items
-  switch(userEmail) {
-    case "studentuser.skooled@gmail.com":
+  switch(userUID) {
+    case "XT7ZqQX5aafPss24oFTeR8xRCok2":
       menuItems = [
         {
           listIcon: <HomeIcon />,
@@ -230,27 +233,27 @@ export default function SearchAppBar() {
         }
       ];
       break;
-    case "teacheruser.skooled@gmail.com":
+    case "FdI3G6lC5sUX8A2Tp0ReRp6TSc32":
       menuItems = [
-        {
-          listIcon: <CalendarTodayIcon />,
-          listText: "Calendar",
-          listPath: "/calendar",
-        },
         {
           listIcon: <HomeIcon />,
           listText: "Teacher Home",
-          listPath: "/teachhome",
+          listPath: "/teacher-home",
         },
         {
           listIcon: <AssignmentIcon />,
           listText: "Teacher Assignments",
-          listPath: "/teachassignment",
+          listPath: "/teacher-upload-assignment",
         },
         {
           listIcon: <GradeIcon />,
           listText: "Teacher Grade View",
-          listPath: "/teachgrade",
+          listPath: "/teacher-grades",
+        },
+        {
+          listIcon: <GradeIcon />,
+          listText: "Teacher Class Hours",
+          listPath: "/teacher-class-hours",
         }
       ];
       break;
