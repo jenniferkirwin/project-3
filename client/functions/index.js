@@ -36,15 +36,12 @@ app.use('/user', userRoutes);
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-exports.createUser = functions.https.onRequest((req, res) => {
-
-    const body = JSON.parse(req.body);
-
-    return admin.auth().setCustomUserClaims(body.uid, {
-        role: body.role,
+exports.createUser = functions.auth.user().onCreate(user => {
+    return admin.auth().setCustomUserClaims(user.uid, {
+        role: 'student',
     }).then(() => {
         return {
-          message: `User [${body.uid}] has been given role: ${body.role}.`
+          message: `User [${user.uid}] has been given role: student}.`
         }
       }).catch(err => {
         return err;

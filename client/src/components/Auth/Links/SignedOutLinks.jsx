@@ -9,7 +9,7 @@ const SignedInLinks = () => {
   const { currentUser } = useContext(AuthContext);
   if (!currentUser) {
     return (
-      <div>
+      <div style={{ paddingLeft: '75px' }}>
           <Grid container spacing={3}>
 
             <Grid item xs={6}>
