@@ -206,7 +206,6 @@ export default function SearchAppBar() {
   if (currentUser) {
     userEmail = currentUser.email;
     greetingString = `Welcome, ${userEmail}`;
-    console.log(userEmail);
   } else {
     greetingString = `Welcome to Skooled! Please Sign In or Create an Account`; 
   }
