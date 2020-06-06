@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useContext } from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -27,6 +27,12 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ClassHoursCard from './TeacherAssignmentPage/Card/ClassHours';
 import GradesCard from './TeacherAssignmentPage/Card/GradesCard';
 import TeacherAssingmentCard from './TeacherAssignmentPage/Card/index';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import SignedInLinks from './../../components/Auth/Links/SignedInLinks.jsx';
+import SignedOutLinks from './../../components/Auth/Links/SignedOutLinks.jsx';
+import { AuthContext } from './../../components/Auth/auth.js';
+import { NavLink } from 'react-router-dom';
+
 
 const drawerWidth = 240;
 
@@ -115,28 +121,42 @@ const useStyles = makeStyles((theme) => ({
 const menuItems = [
     {
         listIcon: <HomeIcon />,
-        listText: "Home",
-        listPath: "/teachhome",
-    },
-    {
+        listText: "Teacher Home",
+        listPath: "/teacher-home",
+      },
+      {
         listIcon: <AssignmentIcon />,
-        listText: "Assignments",
-        listPath: "/teachassignments",
-    },
-    {
+        listText: "Teacher Assignments",
+        listPath: "/teacher-upload-assignment",
+      },
+      {
         listIcon: <GradeIcon />,
-        listText: "Grades",
-        listPath: "/teachgrades",
-    },
-    {
-        listIcon: <ClassIcon />,
-        listText: "Classes",
-        listPath: "/teachclasses"
-    }
+        listText: "Teacher Grade View",
+        listPath: "/teacher-grades",
+      },
+      {
+        listIcon: <AccessTimeIcon />,
+        listText: "Teacher Class Hours",
+        listPath: "/teacher-class-hours",
+      }
 ]
+
+let greetingString;
+let userEmail = "";
+
 
 export default function Dashboard() {
     const classes = useStyles();
+
+    const { currentUser } = useContext(AuthContext);
+    //Set the greeting string
+    if (currentUser) {
+      userEmail = currentUser.email;
+      greetingString = `Welcome, ${userEmail}`;
+    } else {
+      greetingString = `Welcome to Skooled! Please Sign In or Create an Account`; 
+    }
+
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -149,27 +169,30 @@ export default function Dashboard() {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-                <Toolbar className={classes.toolbar}>
-                    <IconButton
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        Teacher Dashboard
-                    </Typography>
-                    <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
-                            <NotificationsIcon />
-                        </Badge>
-                    </IconButton>
-                </Toolbar>
-            </AppBar>
+            <AppBar
+            position="fixed"
+            className={clsx(classes.appBar, {
+              [classes.appBarShift]: open,
+            })}
+          >
+            <Toolbar>
+                <IconButton
+                    edge="start"
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={handleDrawerOpen}
+                    className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+                >
+                <MenuIcon />
+            </IconButton>
+              <NavLink activeStyle={{color: 'white', textDecoration: 'none'}} to='/'>
+                <Typography variant="h6" noWrap>
+                  { greetingString }
+                </Typography>
+              </NavLink>
+              <SignedInLinks />
+            </Toolbar> 
+          </AppBar>
             <Drawer
                 variant="permanent"
                 classes={{

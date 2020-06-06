@@ -16,8 +16,7 @@ export const AuthProvider = ({ children }) => {
       if (user) {
         user.getIdTokenResult(true).then(idTokenResult => {
           let userEmail = idTokenResult.claims.email;
-            //console.log(`User Email: ${userEmail}`);
-            //console.log(`UID: ${user.uid}`);
+          sessionStorage.setItem(`UID`, user.uid);
         });
       }
       setCurrentUser(user)

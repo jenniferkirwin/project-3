@@ -4,7 +4,7 @@ import TeacherAppBar from './TeacherAssignmentPage/NavBar/index';
 
 const ClassHoursPage = () => {
     return(
-        <div>
+        <div style={{paddingTop: 100}}>
             <TeacherAppBar />
             <ClassHoursGrid />
         </div>
