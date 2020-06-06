@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
@@ -29,6 +29,11 @@ import GradeIcon from '@material-ui/icons/Grade';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import GradesPage from '../../GradesPage';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import SignedInLinks from './../../../../components/Auth/Links/SignedInLinks.jsx';
+import SignedOutLinks from './../../../../components/Auth/Links/SignedOutLinks.jsx';
+import { AuthContext } from './../../../../components/Auth/auth.js';
+import { NavLink } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -151,24 +156,41 @@ const useStyles = makeStyles((theme: Theme) =>
 const menuItems = [
     {
         listIcon: <HomeIcon />,
-        listText: "Home",
-        listPath: "/teachhome",
-    },
-    {
+        listText: "Teacher Home",
+        listPath: "/teacher-home",
+      },
+      {
         listIcon: <AssignmentIcon />,
-        listText: "Assignments",
-        listPath: "/teachassignment",
-    },
-    {
+        listText: "Teacher Assignments",
+        listPath: "/teacher-upload-assignment",
+      },
+      {
         listIcon: <GradeIcon />,
-        listText: "Grades",
-        listPath: "/teachgrade",
-    }
+        listText: "Teacher Grade View",
+        listPath: "/teacher-grades",
+      },
+      {
+        listIcon: <AccessTimeIcon />,
+        listText: "Teacher Class Hours",
+        listPath: "/teacher-class-hours",
+      }
 ]
+
+let greetingString;
+let userEmail = "";
 
 export default function TeacherAppBar() {
 
     const classes = useStyles();
+
+    const { currentUser } = useContext(AuthContext);
+    //Set the greeting string
+    if (currentUser) {
+      userEmail = currentUser.email;
+      greetingString = `Welcome, ${userEmail}`;
+    } else {
+      greetingString = `Welcome to Skooled! Please Sign In or Create an Account`; 
+    }
 
     const theme = useTheme();
 
@@ -186,39 +208,29 @@ export default function TeacherAppBar() {
         <div className={classes.root}>
             <CssBaseline />
             <AppBar
-                position="fixed"
-                className={clsx(classes.appBar, {
-                    [classes.appBarShift]: open,
-                })}
-            >
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        className={clsx(classes.menuButton, open && classes.hide)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" noWrap>
-                        Teacher's Dashboard
-                    </Typography>
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
-                        </div>
-                        <InputBase
-                            placeholder="Search..."
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </div>
-                </Toolbar>
-            </AppBar>
+            position="fixed"
+            className={clsx(classes.appBar, {
+              [classes.appBarShift]: open,
+            })}
+          >
+            <Toolbar>
+                <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={handleDrawerOpen}
+                    edge="start"
+                    className={clsx(classes.menuButton, open && classes.hide)}
+                >
+                    <MenuIcon />
+                </IconButton>
+              <NavLink activeStyle={{color: 'white', textDecoration: 'none'}} to='/'>
+                <Typography variant="h6" noWrap>
+                  { greetingString }
+                </Typography>
+              </NavLink>
+              <SignedInLinks />
+            </Toolbar> 
+          </AppBar>
             <Drawer
                 className={classes.drawer}
                 variant="persistent"

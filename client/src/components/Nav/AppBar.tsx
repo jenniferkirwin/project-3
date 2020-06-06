@@ -160,37 +160,37 @@ let menuItems = [
   {
     listIcon: <HomeIcon />,
     listText: "Student Home",
-    listPath: "/",
+    listPath: "/student-home",
   },
   {
     listIcon: <AssignmentIcon />,
     listText: "Student Assignments",
-    listPath: "/assignments",
+    listPath: "/student-assignments",
   },
   {
     listIcon: <GradeIcon />,
     listText: "Student Grades",
-    listPath: "/grades",
-  },
-  {
-    listIcon: <CalendarTodayIcon />,
-    listText: "Calendar",
-    listPath: "/calendar",
+    listPath: "/student-grades",
   },
   {
     listIcon: <HomeIcon />,
     listText: "Teacher Home",
-    listPath: "/teachhome",
+    listPath: "/teacher-home",
   },
   {
     listIcon: <AssignmentIcon />,
     listText: "Teacher Assignments",
-    listPath: "/teachassignment",
+    listPath: "/teacher-upload-assignment",
   },
   {
     listIcon: <GradeIcon />,
     listText: "Teacher Grade View",
-    listPath: "/teachgrade",
+    listPath: "/teacher-grades",
+  },
+  {
+    listIcon: <AccessTimeIcon />,
+    listText: "Teacher Class Hours",
+    listPath: "/teacher-class-hours",
   }
 ];
 
@@ -225,12 +225,12 @@ export default function SearchAppBar() {
         {
           listIcon: <AssignmentIcon />,
           listText: "Student Assignments",
-          listPath: "/assignments",
+          listPath: "/student-assignments",
         },
         {
           listIcon: <GradeIcon />,
           listText: "Student Grades",
-          listPath: "/grades",
+          listPath: "/student-grades",
         }
       ];
       break;
@@ -263,37 +263,37 @@ export default function SearchAppBar() {
         {
           listIcon: <HomeIcon />,
           listText: "Student Home",
-          listPath: "/",
+          listPath: "/student-home",
         },
         {
           listIcon: <AssignmentIcon />,
           listText: "Student Assignments",
-          listPath: "/assignments",
+          listPath: "/student-assignments",
         },
         {
           listIcon: <GradeIcon />,
           listText: "Student Grades",
-          listPath: "/grades",
-        },
-        {
-          listIcon: <CalendarTodayIcon />,
-          listText: "Calendar",
-          listPath: "/calendar",
+          listPath: "/student-grades",
         },
         {
           listIcon: <HomeIcon />,
           listText: "Teacher Home",
-          listPath: "/teachhome",
+          listPath: "/teacher-home",
         },
         {
           listIcon: <AssignmentIcon />,
           listText: "Teacher Assignments",
-          listPath: "/teachassignment",
+          listPath: "/teacher-upload-assignment",
         },
         {
           listIcon: <GradeIcon />,
           listText: "Teacher Grade View",
-          listPath: "/teachgrade",
+          listPath: "/teacher-grades",
+        },
+        {
+          listIcon: <AccessTimeIcon />,
+          listText: "Teacher Class Hours",
+          listPath: "/teacher-class-hours",
         }
       ];
   } 
