@@ -25,11 +25,11 @@ db.sequelize.sync();
 
 // For Express Routes
 // const studentRoutes = require('./routes/student-routes');
-// const teacherRoutes = require('./routes/teacher-routes');
+const teacherRoutes = require('./routes/teacher-routes');
 const userRoutes = require('./routes/user-routes');
 
 // app.use('/student', studentRoutes);
-// app.use('/teacher', teacherRoutes);
+app.use('/teacher', teacherRoutes);
 app.use('/user', userRoutes);
 
 // Functions
