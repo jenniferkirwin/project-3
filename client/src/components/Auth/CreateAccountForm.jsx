@@ -21,18 +21,7 @@ const SignUp = ({ history }) => {
             await app.auth().createUserWithEmailAndPassword(email.value, password.value).then(cred => {
                 let uid = cred.user.uid;
                     console.log(uid);
-                const fURL = `https://us-central1-user-management-system-2020.cloudfunctions.net/createUser`;
-                const fetchOptions = {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        'uid': uid,
-                        'role': roleClaim,
-                    })
-                };
-                fetch(fURL, fetchOptions).then(function () {
-                    console.log(`added ${roleClaim} role to user ${uid}`);
-                });
-                return false;
+                    sessionStorage.setItem(`UID`, uid);
             });
             history.push("/");
         } catch (error) {
