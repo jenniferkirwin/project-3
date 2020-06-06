@@ -36,7 +36,7 @@ app.use('/user', userRoutes);
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-exports.createUser = functions.auth.user().onCreate(user => {
+/*exports.createUser = functions.auth.user().onCreate(user => {
     return admin.auth().setCustomUserClaims(user.uid, {
         role: 'student',
     }).then(() => {
@@ -48,6 +48,6 @@ exports.createUser = functions.auth.user().onCreate(user => {
       });
     
 
-});
+});*/
 
 exports.app = functions.https.onRequest(app);
