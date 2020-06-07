@@ -89,7 +89,7 @@ module.exports = {
     });
   },
   findUser: (req, res) => {
-    console.log(`${hr}SCHOOL ROLE:${req.params.id}${hr}`)
+    console.log(`${hr}USER:${req.params.id}${hr}`)
     db.SchoolRole
       .findOne({
         where: {
