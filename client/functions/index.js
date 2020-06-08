@@ -9,8 +9,11 @@ admin.initializeApp();
 // Express
 const express = require('express');
 const app = express();
+const cors = require('cors');
+app.use(cors({ origin: true }));
 
 // Express Middleware
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -36,18 +39,18 @@ app.use('/user', userRoutes);
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-exports.createUser = functions.auth.user().onCreate(user => {
-    return admin.auth().setCustomUserClaims(user.uid, {
-        role: 'student',
-    }).then(() => {
-        return {
-          message: `User [${user.uid}] has been given role: student}.`
-        }
-      }).catch(err => {
-        return err;
-      });
+// exports.createUser = functions.auth.user().onCreate(user => {
+//     return admin.auth().setCustomUserClaims(user.uid, {
+//         role: 'student',
+//     }).then(() => {
+//         return {
+//           message: `User [${user.uid}] has been given role: student}.`
+//         }
+//       }).catch(err => {
+//         return err;
+//       });
     
 
-});
+// });
 
 exports.app = functions.https.onRequest(app);

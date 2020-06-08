@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
     assignmentText: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    dueDate: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
     }
   }, {});
   Assignment.associate = function(models) {
