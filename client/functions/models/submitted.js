@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     grade: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true,
+      defaultValue: null
     },
   }, {});
   Submitted.associate = function(models) {
