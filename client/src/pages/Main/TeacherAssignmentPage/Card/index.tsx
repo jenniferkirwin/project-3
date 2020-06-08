@@ -11,6 +11,8 @@ const useStyles = makeStyles({
     root: {
         minWidth: 275,
         minHeight: 200,
+        overflow: 'auto',
+        flexDirection: 'column',
     },
     bullet: {
         display: 'inline-block',
@@ -28,19 +30,25 @@ const useStyles = makeStyles({
 
 
 export default function TeacherAssignmentCard() {
-    
+
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
 
     return (
         <Card className={classes.root}>
             <CardContent>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
                     {assignment.map((assignmentDetail, index) => {
-                        return <h1>{assignmentDetail.assignmentId}</h1>
+                        return <div key={index}>
+                            <h1>{assignmentDetail.assignmentId}</h1>
+                            <p>{assignmentDetail.assignmentText}</p>
+                            <CardActions>
+                                <Button size="small">Assignment</Button>
+                            </CardActions>
+                        </div>
                     })}
                 </Typography>
-                <Typography variant="h5" component="h2">
+
+                {/* <Typography variant="h5" component="h2">
                     {assignment.map((assignmentDetail, index) => {
                         return <h2>{assignmentDetail.assignmentText}</h2>
                     })}
@@ -50,11 +58,9 @@ export default function TeacherAssignmentCard() {
                 </Typography>
                 <Typography variant="body2" component="p">
                     More description of the Assignment
-                </Typography>
+                </Typography> */}
             </CardContent>
-            <CardActions>
-                <Button size="small">Assignment</Button>
-            </CardActions>
+
         </Card>
     );
 }
