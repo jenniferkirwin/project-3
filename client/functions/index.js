@@ -9,8 +9,11 @@ admin.initializeApp();
 // Express
 const express = require('express');
 const app = express();
+const cors = require('cors');
+app.use(cors({ origin: true }));
 
 // Express Middleware
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -25,11 +28,11 @@ db.sequelize.sync();
 
 // For Express Routes
 // const studentRoutes = require('./routes/student-routes');
-// const teacherRoutes = require('./routes/teacher-routes');
+const teacherRoutes = require('./routes/teacher-routes');
 const userRoutes = require('./routes/user-routes');
 
 // app.use('/student', studentRoutes);
-// app.use('/teacher', teacherRoutes);
+app.use('/teacher', teacherRoutes);
 app.use('/user', userRoutes);
 
 // Functions
