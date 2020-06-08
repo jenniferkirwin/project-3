@@ -33,7 +33,7 @@ class App extends Component {
               <PrivateRoute exact path='/'component={LandingGrid} />
               <Route path='/login' component={Login} />
               <Route path='/createaccount' component={CreateAccount} />
-              <Route path ='*'><Redirect to='/' /></Route>
+               <Route path ='*'><Redirect to='/' /></Route>
 
               <PrivateRoute path='/student-home' component={StudentHome} />
               
