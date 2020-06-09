@@ -34,24 +34,26 @@ const useStyles = makeStyles({
 // }
 
 
-export default function TeacherAssignmentCard(this: any) {
+export default function TeacherAssignmentCard() {
 
     const classes = useStyles();
 
     return (
-        <Card className={classes.root}>
-            <CardContent>
-                {assignments.map((assignment) => (
+        <div>
+            {assignments.map((assignment) => (
+                <Card className={classes.root}>
+                    <CardContent>
                     <div key={assignment.id}>
                         <h1>{assignment.assignmentId}</h1>
                         <p>{assignment.assignmentText}</p>
                     </div>
-                ))}
-                <CardActions>
-                    <Button size="small">Assignment</Button>
-                </CardActions>
-            </CardContent>
-        </Card>
+                    </CardContent>
+                    <CardActions>
+                        <Button size="small">Assignment</Button>
+                    </CardActions>
+                </Card>
+            ))}
+        </div>
     );
 }
 
