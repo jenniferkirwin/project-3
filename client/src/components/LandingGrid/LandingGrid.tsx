@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import SimpleCard from '../Card/index';
+import { AuthContext } from "./../Auth/auth.js";
+
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -43,12 +45,12 @@ export default function LandingGrid() {
 
   const classes = useStyles();
 
-
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
   //   setSpacing(Number((event.target as HTMLInputElement).value) as GridSpacing);
   // };
+
 
 
   return (

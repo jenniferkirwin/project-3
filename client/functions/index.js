@@ -39,18 +39,18 @@ app.use('/user', userRoutes);
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-// exports.createUser = functions.auth.user().onCreate(user => {
-//     return admin.auth().setCustomUserClaims(user.uid, {
-//         role: 'student',
-//     }).then(() => {
-//         return {
-//           message: `User [${user.uid}] has been given role: student}.`
-//         }
-//       }).catch(err => {
-//         return err;
-//       });
+/*exports.createUser = functions.auth.user().onCreate(user => {
+    return admin.auth().setCustomUserClaims(user.uid, {
+        role: 'student',
+    }).then(() => {
+        return {
+          message: `User [${user.uid}] has been given role: student}.`
+        }
+      }).catch(err => {
+        return err;
+      });
     
 
-// });
+});*/
 
 exports.app = functions.https.onRequest(app);

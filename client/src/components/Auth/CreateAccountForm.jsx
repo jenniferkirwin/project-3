@@ -15,13 +15,11 @@ const SignUp = ({ history }) => {
         event.preventDefault();
         const { email, password, role, school } = event.target.elements;
             //console.log(email.value, password.value, role.value, school.value);
-            let roleClaim = role.value
-            console.log(role.Claim);
         try {
             await app.auth().createUserWithEmailAndPassword(email.value, password.value).then(cred => {
                 let uid = cred.user.uid;
-                    console.log(uid);
                     sessionStorage.setItem(`UID`, uid);
+                    console.log(uid);
             });
             history.push("/");
         } catch (error) {

@@ -1,0 +1,8 @@
+{
+  "awsdatabase": {
+    "host": "school-db-instance-1.c5rq41gensvt.us-east-1.rds.amazonaws.com",
+    "username": "admin",
+    "password": "GetDataForProject3!",
+    "database": "school_db"
+  }
+}
