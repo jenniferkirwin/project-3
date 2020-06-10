@@ -9,6 +9,8 @@ import Grid from '@material-ui/core/Grid';
 import GradesCard from '../Card/GradesCard';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
+// import CirclesBackground from "./Circles";
+
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -50,6 +52,7 @@ export default function GradesGrid() {
         <div>
 
             <main className={classes.content}>
+                
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={3}>
