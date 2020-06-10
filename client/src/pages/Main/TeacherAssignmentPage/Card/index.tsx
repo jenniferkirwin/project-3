@@ -5,7 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import assignment from '../assignment.json';
+import assignments from '../assignment.json';
 
 const useStyles = makeStyles({
     root: {
@@ -27,6 +27,11 @@ const useStyles = makeStyles({
     },
 });
 
+// interface AssignmentProps {
+//     assignmentId: string
+//     assignmentText: string
+//     courseId: string
+// }
 
 
 export default function TeacherAssignmentCard() {
@@ -34,33 +39,21 @@ export default function TeacherAssignmentCard() {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root}>
-            <CardContent>
-                <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    {assignment.map((assignmentDetail, index) => {
-                        return <div key={index}>
-                            <h1>{assignmentDetail.assignmentId}</h1>
-                            <p>{assignmentDetail.assignmentText}</p>
-                            <CardActions>
-                                <Button size="small">Assignment</Button>
-                            </CardActions>
-                        </div>
-                    })}
-                </Typography>
-
-                {/* <Typography variant="h5" component="h2">
-                    {assignment.map((assignmentDetail, index) => {
-                        return <h2>{assignmentDetail.assignmentText}</h2>
-                    })}
-                </Typography>
-                <Typography className={classes.pos} color="textSecondary">
-                    Due Date 
-                </Typography>
-                <Typography variant="body2" component="p">
-                    More description of the Assignment
-                </Typography> */}
-            </CardContent>
-
-        </Card>
+        <div>
+            {assignments.map((assignment) => (
+                <Card className={classes.root}>
+                    <CardContent>
+                    <div key={assignment.id}>
+                        <h1>{assignment.assignmentId}</h1>
+                        <p>{assignment.assignmentText}</p>
+                    </div>
+                    </CardContent>
+                    <CardActions>
+                        <Button size="small">Assignment</Button>
+                    </CardActions>
+                </Card>
+            ))}
+        </div>
     );
 }
+
