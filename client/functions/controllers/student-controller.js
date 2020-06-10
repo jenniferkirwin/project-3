@@ -5,7 +5,7 @@ module.exports = {
     createSubmit: (req, res) => {
       db.Submitted
       .create({
-        SubmittedSubmittedContent: req.body.submittedContent,
+        submittedContent: req.body.submittedContent,
         AssignmentAssignmentId: req.body.assignmentId,
         UserUserId: req.body.userId        
       })

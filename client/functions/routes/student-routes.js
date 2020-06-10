@@ -12,10 +12,10 @@ const studentController = require('../controllers/student-controller')
 
 router
   .route('/')
-  .get(studentController.findAssignments);
-
+  .post(studentController.createSubmit);
+  
 router
   .route('/:studentId')
-  .post(studentController.createSubmit)
+  .get(studentController.findAssignments);
 
 module.exports = router;
