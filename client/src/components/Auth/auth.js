@@ -28,8 +28,7 @@ export const AuthProvider = ({ children }) => {
           .then(res => {
             sessionStorage.setItem('Role', res.data.RoleRoleId);
             sessionStorage.setItem('School', res.data.SchoolSchoolId);
-          }
-        )
+          })
           .catch(err => console.log(err));
       };
       loadUser();
