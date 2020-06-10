@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import './App.css';
 import SearchAppBar from './components/Nav/AppBar'
 import LandingGrid from './components/LandingGrid/LandingGrid'
@@ -33,8 +33,9 @@ class App extends Component {
               <PrivateRoute exact path='/'component={LandingGrid} />
               <Route path='/login' component={Login} />
               <Route path='/createaccount' component={CreateAccount} />
+              {/*<Route path ='*'><Redirect to='/' /></Route>*/}
 
-              <PrivateRoute path='/student-home' component={StudentHome} />
+              <PrivateRoute exact path='/student-home' component={StudentHome} />
               
               <PrivateRoute path='/teacher-home' component={MainTeacher} />
               <PrivateRoute path='/teacher-grades' component={GradesPage} />
