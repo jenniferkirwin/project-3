@@ -9,33 +9,32 @@ const SignedInLinks = () => {
   const { currentUser } = useContext(AuthContext);
   if (!currentUser) {
     return (
-      <div style={{ paddingLeft: '75px' }}>
-          <Grid container spacing={3}>
+        <div style={{ paddingLeft: '125px' }}>
+            <Grid container spacing={3}>
 
-            <Grid item xs={6}>
-              <NavLink to='/createaccount'>
-                <button 
-                  className="btn waves-effect waves-light btn-small amber darken-1 z-depth-0"
-                  style={{width: 175}}
-                >
-                  Create Account
-                </button>
-              </NavLink>
+              <Grid item xs={6}>
+                <NavLink to='/createaccount'>
+                  <button 
+                    className="btn waves-effect waves-light btn-small amber darken-1 z-depth-0"
+                    style={{width: 175}}
+                  >
+                    Create Account
+                  </button>
+                </NavLink>
+              </Grid>
+              <Grid item xs={6}>
+                <NavLink to='/login'>
+                  <button 
+                    className="btn waves-effect waves-light btn-small green loghten-1 z-depth-0"
+                    style={{width: 175}}
+                  >
+                    Log In
+                  </button>
+                </NavLink>
+              </Grid>
+
             </Grid>
-
-            <Grid item xs={6}>
-              <NavLink to='/login'>
-                <button 
-                  className="btn waves-effect waves-light btn-small green loghten-1 z-depth-0"
-                  style={{width: 175}}
-                >
-                  Log In
-                </button>
-              </NavLink>
-            </Grid>
-
-          </Grid>
-        </div>
+          </div>
     )
   } else {
     return <div></div>

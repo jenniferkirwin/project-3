@@ -3,7 +3,6 @@ import app from "./../../config/fbConfig.js";
 import API from './../../util/authApi';
 
 //Propagate auth data through whole react component tree
-
 export const AuthContext = React.createContext();
 
 //Store authentication status
@@ -15,7 +14,6 @@ export const AuthProvider = ({ children }) => {
     app.auth().onAuthStateChanged((user) => {
       if (user) {
         user.getIdTokenResult(true).then(idTokenResult => {
-          let userEmail = idTokenResult.claims.email;
           sessionStorage.setItem(`UID`, user.uid);
         });
       }
