@@ -10,6 +10,8 @@ const userController = require('../controllers/teacher-controller');
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
+// Courses
+// ---------------------------------------------------------------------------
 // Create Courses
 router
   .route('/courses')
@@ -20,34 +22,46 @@ router
   .route('/courses/:teacherId')
   .get(userController.findCourses)
 
+// Courses by TeacherID
+router
+  .route('/courses/all/:schoolId')
+  .get(userController.findAllCourses)
+
+// Enrollments
+// ---------------------------------------------------------------------------
 // Create Student Enrollment
 router
   .route('/enrollments/')
   .post(userController.enrollStudent)
 
-// Find Students in Given Teacher's Classes
+// Find Students by Teacher, Separated by Class
 router
   .route('/enrollments/:teacherId')
   .get(userController.findStudents)
 
+// Assignments
+// ---------------------------------------------------------------------------
+// Create Assignments
 router
   .route('/assignments/')
   .post(userController.createAssignment)
-  // .put(userController.updateAssignment)
-  // .get(userController.findAssignments)
+  .get(userController.findStudentAssignments)
 
-// router
-//   .route('/assignments/:studentId')
-//   .get(userController.findStudentAssignments)
+// Grade Assignments
+router
+  .route('/assignments/grade')
+  .put(userController.gradeAssignment)
 
-// // NEED TO THINK ABOUT THIS ROUTE
-// router
-//   .route('/assignments/submitted/:studentId')
-//   .put(userController.updateStudentAssignment)
+// Annoucements
+// ---------------------------------------------------------------------------
+// Create Annoucements
+router
+  .route('/announcements/')
+  .post(userController.createAnnouncement)
 
+// Find Annoucements
+router
+  .route('/announcements/:courseId')
+  .post(userController.findAnnouncements)
 
 module.exports = router;
-
-// find students
-// find assignments
-// create assignments
