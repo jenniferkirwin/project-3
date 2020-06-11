@@ -159,7 +159,9 @@ const useStyles = makeStyles((theme: Theme) =>
 let menuItems = [];
 
 let userEmail = "";
-let userUID = "";
+let userRoleId = sessionStorage.Role;
+  //Student Role: f21db5e4-d63c-4736-9098-04bf4da0ee9e
+  //Teacher Role: 5ede9c42-1f1f-4425-8de4-affe508b5adb
 let greetingString;
 
 type TParams = { id: string };
@@ -171,15 +173,13 @@ export default function SearchAppBar() {
   //Set the greeting string
   if (currentUser) {
     userEmail = currentUser.email;
-    userUID = currentUser.uid;
-      //console.log(userUID);
     greetingString = `Welcome, ${userEmail}`;
   } else {
     greetingString = `Welcome to Skooled! Please Sign In or Create an Account`; 
   }
   //Set the sidebar menu items
-  switch(userUID) {
-    case "XT7ZqQX5aafPss24oFTeR8xRCok2":
+  switch(userRoleId) {
+    case "f21db5e4-d63c-4736-9098-04bf4da0ee9e":
       menuItems = [
         {
           listIcon: <HomeIcon />,
@@ -198,7 +198,7 @@ export default function SearchAppBar() {
         }
       ];
       break;
-    case "FdI3G6lC5sUX8A2Tp0ReRp6TSc32":
+    case "5ede9c42-1f1f-4425-8de4-affe508b5adb":
       menuItems = [
         {
           listIcon: <HomeIcon />,
