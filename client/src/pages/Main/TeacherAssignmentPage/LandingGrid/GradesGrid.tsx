@@ -58,6 +58,12 @@ export default function GradesGrid() {
                     <Grid container spacing={3}>
 
                         <Grid item xs={12} md={8} lg={9}>
+                            
+                                <GradesCard />
+                            
+                        </Grid>
+
+                        {/* <Grid item xs={12} md={8} lg={9}>
                             <Paper className={fixedHeightPaper}>
                                 <GradesCard />
                             </Paper>
@@ -67,13 +73,7 @@ export default function GradesGrid() {
                             <Paper className={fixedHeightPaper}>
                                 <GradesCard />
                             </Paper>
-                        </Grid>
-
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
-                                <GradesCard />
-                            </Paper>
-                        </Grid>
+                        </Grid> */}
 
                     </Grid>
                 </Container>
