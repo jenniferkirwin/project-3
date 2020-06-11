@@ -25,9 +25,10 @@ export const AuthProvider = ({ children }) => {
       const UID = user.uid;
       function loadUser() {
         API.findUser(UID)
-          .then(res => 
-            console.log(res.data)
-          )
+          .then(res => {
+            sessionStorage.setItem('Role', res.data.RoleRoleId);
+            sessionStorage.setItem('School', res.data.SchoolSchoolId);
+          })
           .catch(err => console.log(err));
       };
       loadUser();

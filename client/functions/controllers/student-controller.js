@@ -22,7 +22,7 @@ module.exports = {
       db.Course
       .findAll({
         where: {
-          UserUserId: req.params.studentId
+          CourseCourseId: req.params.courseId
         },
         include: [{
           model: db.Assignment,

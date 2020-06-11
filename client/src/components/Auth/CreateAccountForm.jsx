@@ -7,19 +7,34 @@ import Grid from '@material-ui/core/Grid';
 // import Select from '@material-ui/core/Select';
 import app from "./../../config/fbConfig.js";
 import { AuthContext } from "./auth.js";
-import firebase from 'firebase/app'
+import firebase from 'firebase/app';
+import API from './../../util/authApi';
 
 
 const SignUp = ({ history }) => {
     const handleSignUp = useCallback(async event => {
         event.preventDefault();
-        const { email, password, role, school } = event.target.elements;
-            //console.log(email.value, password.value, role.value, school.value);
+        const { email, password, firstName, lastName, role, school } = event.target.elements;
         try {
             await app.auth().createUserWithEmailAndPassword(email.value, password.value).then(cred => {
                 let uid = cred.user.uid;
-                    sessionStorage.setItem(`UID`, uid);
-                    console.log(uid);
+                sessionStorage.setItem(`UID`, uid);
+                let userObject = {
+                    userId: uid,
+                    firstName: firstName.value, 
+                    lastName: lastName.value,
+                    email: email.value,
+                    role: role.value,
+                    school: school.value
+                }
+                function createUser() {
+                    API.createUser(userObject)
+                        .then(res =>
+                            console.log(`User added!`)
+                        )
+                        .catch(err => console.log(err));
+                }
+                createUser();
             });
             history.push("/");
         } catch (error) {

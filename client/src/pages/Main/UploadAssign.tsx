@@ -5,7 +5,7 @@ import TeacherAppBar from './TeacherAssignmentPage/NavBar/index';
 const UploadAssign = () => {
     return (
       <div>
-          <TeacherAppBar />
+          {/* <TeacherAppBar /> */}
           <TeacherPage />
       </div>  
     );
