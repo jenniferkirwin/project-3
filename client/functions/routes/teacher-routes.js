@@ -56,12 +56,12 @@ router
 // ---------------------------------------------------------------------------
 // Create Annoucements
 router
-  .route('/annoucements/')
-  .post(userController.createAnnoucement)
+  .route('/announcements/')
+  .post(userController.createAnnouncement)
 
 // Find Annoucements
 router
-  .route('/annoucements/:courseId')
-  .post(userController.findAnnoucements)
+  .route('/announcements/:courseId')
+  .post(userController.findAnnouncements)
 
 module.exports = router;

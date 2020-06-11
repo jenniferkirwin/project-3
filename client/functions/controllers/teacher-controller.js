@@ -154,17 +154,17 @@ module.exports = {
     })
   },
 
-  // Create Class Annoucements
+  // Create Class Announcements
   // -------------------------------------------------------------------------
 
-  createAnnoucement: (req, res) => {
-    db.Annoucement
+  createAnnouncement: (req, res) => {
+    db.Announcement
     .create({
       announcementText: req.body.announcementText,
       CourseCourseId: req.body.courseId        
     })
-    .then((newAnnoucement) => {
-      res.status(200).json(newAnnoucement);
+    .then((newAnnouncement) => {
+      res.status(200).json(newAnnouncement);
     })
     .catch((error) => {
       console.error(error);
@@ -172,15 +172,15 @@ module.exports = {
     })
   },
 
-  findAnnoucements: (req, res) => {
-    db.Annoucement
+  findAnnouncements: (req, res) => {
+    db.Announcement
     .findAll({
       where: {
         CourseCourseId: req.body.courseId
       }
     })           
-    .then((foundAnnoucements) => {
-      res.status(200).json(foundAnnoucements);
+    .then((foundAnnouncements) => {
+      res.status(200).json(foundAnnouncements);
     })
     .catch((error) => {
       console.error(error);
