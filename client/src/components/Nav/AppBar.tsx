@@ -156,43 +156,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-let menuItems = [
-  {
-    listIcon: <HomeIcon />,
-    listText: "Student Home",
-    listPath: "/student-home",
-  },
-  {
-    listIcon: <AssignmentIcon />,
-    listText: "Student Assignments",
-    listPath: "/student-assignments",
-  },
-  {
-    listIcon: <GradeIcon />,
-    listText: "Student Grades",
-    listPath: "/student-grades",
-  },
-  {
-    listIcon: <HomeIcon />,
-    listText: "Teacher Home",
-    listPath: "/teacher-home",
-  },
-  {
-    listIcon: <AssignmentIcon />,
-    listText: "Teacher Assignments",
-    listPath: "/teacher-upload-assignment",
-  },
-  {
-    listIcon: <GradeIcon />,
-    listText: "Teacher Grade View",
-    listPath: "/teacher-grades",
-  },
-  {
-    listIcon: <AccessTimeIcon />,
-    listText: "Teacher Class Hours",
-    listPath: "/teacher-class-hours",
-  }
-];
+let menuItems = [];
 
 let userEmail = "";
 let userUID = "";
@@ -224,8 +188,8 @@ export default function SearchAppBar() {
         },
         {
           listIcon: <AssignmentIcon />,
-          listText: "Student Assignments",
-          listPath: "/student-assignments",
+          listText: "Student Course Search",
+          listPath: "/student-course-search",
         },
         {
           listIcon: <GradeIcon />,
@@ -267,8 +231,8 @@ export default function SearchAppBar() {
         },
         {
           listIcon: <AssignmentIcon />,
-          listText: "Student Assignments",
-          listPath: "/student-assignments",
+          listText: "Student Course Search",
+          listPath: "/student-course-search",
         },
         {
           listIcon: <GradeIcon />,
