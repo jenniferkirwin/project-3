@@ -4,7 +4,7 @@
 
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/teacher-controller');
+const teacherController = require('../controllers/teacher-controller');
 
 // Routes
 // ---------------------------------------------------------------------------
@@ -15,53 +15,58 @@ const userController = require('../controllers/teacher-controller');
 // Create Courses
 router
   .route('/courses')
-  .post(userController.createCourse)
+  .post(teacherController.createCourse)
 
 // Courses by TeacherID
 router
   .route('/courses/:teacherId')
-  .get(userController.findCourses)
+  .get(teacherController.findCourses)
 
 // Courses by TeacherID
 router
   .route('/courses/all/:schoolId')
-  .get(userController.findAllCourses)
+  .get(teacherController.findAllCourses)
 
 // Enrollments
 // ---------------------------------------------------------------------------
 // Create Student Enrollment
 router
   .route('/enrollments/')
-  .post(userController.enrollStudent)
+  .post(teacherController.enrollStudent)
 
 // Find Students by Teacher, Separated by Class
 router
   .route('/enrollments/:teacherId')
-  .get(userController.findStudents)
+  .get(teacherController.findStudents)
 
 // Assignments
 // ---------------------------------------------------------------------------
 // Create Assignments
 router
   .route('/assignments/')
-  .post(userController.createAssignment)
-  .get(userController.findStudentAssignments)
+  .post(teacherController.createAssignment)
+  .get(teacherController.findStudentAssignments)
 
 // Grade Assignments
 router
   .route('/assignments/grade')
-  .put(userController.gradeAssignment)
+  .put(teacherController.gradeAssignment)
+
+// Find Assignments by Class
+router
+  .route('/assignments/courses/:teacherId')
+  .get(teacherController.findClassAssignments)
 
 // Annoucements
 // ---------------------------------------------------------------------------
 // Create Annoucements
 router
   .route('/announcements/')
-  .post(userController.createAnnouncement)
+  .post(teacherController.createAnnouncement)
 
 // Find Annoucements
 router
   .route('/announcements/:courseId')
-  .post(userController.findAnnouncements)
+  .post(teacherController.findAnnouncements)
 
 module.exports = router;
