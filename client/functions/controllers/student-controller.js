@@ -1,4 +1,43 @@
+// Dependencies
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 const db = require("../models");
+const { Op } = require("sequelize");
+const hr = '-------------------------------------------------'
+
+// Functions
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+const foundEnrollments = (studentId) => {
+  return db.Enrollment
+  .findAll({
+    where: {
+      UserUserId: studentId,
+    },
+    attributes: ['CourseCourseId'],
+    raw: true
+  })
+  .then((foundEnrollments) => {
+
+    const formattedCourses = foundEnrollments.map(item => {
+      const container = {};
+
+      container.courseId = item.CourseCourseId;
+
+      return container;
+    })
+
+    return formattedCourses;
+  })
+  .catch((err) => {
+    console.error(err);
+  })
+}
+
+// Routes
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 module.exports = {
 
@@ -22,7 +61,7 @@ module.exports = {
       db.Course
       .findAll({
         where: {
-          CourseCourseId: req.params.courseId
+          courseId: req.params.courseId
         },
         include: [{
           model: db.Assignment,
@@ -35,5 +74,43 @@ module.exports = {
         console.error(error);
         res.sendStatus(500);
       })
+    },
+
+    findStudentCourses: (req, res) => {
+      Promise.all([
+        foundEnrollments(req.body.userId),
+      ])
+      .then(([returnedCourses]) => {
+        db.Course
+        .findAll({
+          where: {
+            [Op.or]: returnedCourses
+          },
+          include: [{
+            model: db.Assignment,
+          }]
+        })        
+        .then((foundCourses) => {
+          res.status(200).json(foundCourses);
+        })
+        .catch((err) => {
+          console.error(
+            `${hr}
+            ERROR:
+            ${err}
+            ${hr}`
+          );
+          res.sendStatus(500);
+        })
+      })
+      .catch((error) => {
+        console.error(
+          `${hr}
+          ERROR 2:
+          ${error}
+          ${hr}`
+        );
+        res.sendStatus(500);
+      });
     }
 }
