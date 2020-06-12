@@ -100,9 +100,11 @@ module.exports = {
 
   enrollStudent: (req, res) => {
     db.Enrollment
-    .create({
-      CourseCourseId: req.body.courseId,
-      UserUserId: req.body.userId        
+    .findOrCreate({
+      where: {
+        CourseCourseId: req.body.courseId,
+        UserUserId: req.body.userId  
+      }      
     })
     .then((newEnrollment) => {
       res.status(200).json(newEnrollment);
@@ -135,7 +137,7 @@ module.exports = {
     })
   },
 
-  // Create Class Assignments
+  // Create Class Assignments & Find Assignments by Class
   // -------------------------------------------------------------------------
 
   createAssignment: (req, res) => {
@@ -147,6 +149,25 @@ module.exports = {
     })
     .then((newCourse) => {
       res.status(200).json(newCourse);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    })
+  },
+
+  findClassAssignments: (req, res) => {
+    db.Course
+    .findAll({
+      where: {
+        UserUserId: req.params.teacherId
+      },
+      include: [{
+        model: db.Assignment
+      }]
+    })           
+    .then((foundAssignments) => {
+      res.status(200).json(foundAssignments);
     })
     .catch((error) => {
       console.error(error);
