@@ -48,37 +48,27 @@ export default function GradesGrid() {
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
-    return(
+    return (
         <div>
-
-            <main className={classes.content}>
+            
+                <main className={classes.content}>
                 
-                <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
-                    <Grid container spacing={3}>
+                    <div className={classes.appBarSpacer} />
+                    <Container maxWidth="lg" className={classes.container}>
+                        <Grid container spacing={3}>
 
-                        <Grid item xs={12} md={8} lg={9}>
-                            
+                            <Grid item xs={12} md={8} lg={9}>
+
                                 <GradesCard />
-                            
+
+                            </Grid>
+
                         </Grid>
+                    </Container>
+                </main>
+            
 
-                        {/* <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
-                                <GradesCard />
-                            </Paper>
-                        </Grid>
-
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
-                                <GradesCard />
-                            </Paper>
-                        </Grid> */}
-
-                    </Grid>
-                </Container>
-            </main>
 
         </div>
-    ); 
+    );
 }
