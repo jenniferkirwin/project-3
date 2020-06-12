@@ -4,50 +4,69 @@
 
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/teacher-controller');
+const teacherController = require('../controllers/teacher-controller');
 
 // Routes
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
+// Courses
+// ---------------------------------------------------------------------------
 // Create Courses
 router
   .route('/courses')
-  .post(userController.createCourse)
+  .post(teacherController.createCourse)
 
 // Courses by TeacherID
 router
   .route('/courses/:teacherId')
-  .get(userController.findCourses)
+  .get(teacherController.findCourses)
 
+// Courses by TeacherID
+router
+  .route('/courses/all/:schoolId')
+  .get(teacherController.findAllCourses)
+
+// Enrollments
+// ---------------------------------------------------------------------------
 // Create Student Enrollment
 router
   .route('/enrollments/')
-  .post(userController.enrollStudent)
+  .post(teacherController.enrollStudent)
 
-// Find Students in Given Teacher's Classes
+// Find Students by Teacher, Separated by Class
 router
   .route('/enrollments/:teacherId')
-  .get(userController.findStudents)
+  .get(teacherController.findStudents)
 
+// Assignments
+// ---------------------------------------------------------------------------
+// Create Assignments
 router
   .route('/assignments/')
-  .post(userController.createAssignment)
-  // .put(userController.updateAssignment)
-  // .get(userController.findAssignments)
+  .post(teacherController.createAssignment)
+  .get(teacherController.findStudentAssignments)
 
-// router
-//   .route('/assignments/:studentId')
-//   .get(userController.findStudentAssignments)
+// Grade Assignments
+router
+  .route('/assignments/grade')
+  .put(teacherController.gradeAssignment)
 
-// // NEED TO THINK ABOUT THIS ROUTE
-// router
-//   .route('/assignments/submitted/:studentId')
-//   .put(userController.updateStudentAssignment)
+// Find Assignments by Class
+router
+  .route('/assignments/courses/:teacherId')
+  .get(teacherController.findClassAssignments)
 
+// Annoucements
+// ---------------------------------------------------------------------------
+// Create Annoucements
+router
+  .route('/announcements/')
+  .post(teacherController.createAnnouncement)
+
+// Find Annoucements
+router
+  .route('/announcements/:courseId')
+  .post(teacherController.findAnnouncements)
 
 module.exports = router;
-
-// find students
-// find assignments
-// create assignments
