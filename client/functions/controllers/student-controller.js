@@ -78,7 +78,7 @@ module.exports = {
 
     findStudentCourses: (req, res) => {
       Promise.all([
-        foundEnrollments(req.body.userId),
+        foundEnrollments(req.params.studentId),
       ])
       .then(([returnedCourses]) => {
         db.Course

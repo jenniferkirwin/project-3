@@ -15,11 +15,11 @@ router
   .post(studentController.createSubmit);
 
 router
-  .route('/courses/')
+  .route('/courses/:studentId')
   .get(studentController.findStudentCourses);
 
 router
-  .route('/courses/:courseId')
+  .route('/assignments/:courseId')
   .get(studentController.findAssignments)
 
 module.exports = router;
