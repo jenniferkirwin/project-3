@@ -53,7 +53,6 @@ router
   .put(teacherController.gradeAssignment)
 
 // Find Assignments by Class
-// NEED TO FINISH
 router
   .route('/assignments/courses/:teacherId')
   .get(teacherController.findClassAssignments)

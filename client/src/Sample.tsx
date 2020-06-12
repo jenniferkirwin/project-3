@@ -10,7 +10,7 @@ const API = new APIUtil;
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
 
-// STUDENTS / SEARCH PAGE - Get Courses
+// STUDENTS / SEARCH PAGE - GET - Get Courses
 // ---------------------------------------------------
 const foundCourses = () => API.getCourses(sessionStorage.getItem('School'))
   .then(({data}) => {
@@ -20,7 +20,7 @@ const foundCourses = () => API.getCourses(sessionStorage.getItem('School'))
     console.log(error)
   });
 
-// STUDENTS / SEARCH PAGE - Enroll in Course. WON'T make a duplicate reccord
+// STUDENTS / SEARCH PAGE - POST - Enroll in Course. WON'T make a duplicate reccord
 // ---------------------------------------------------
 const enrollInCourse = (selectedCourse: string) => API.enrollStudent({
   courseId: selectedCourse,
@@ -34,6 +34,38 @@ const enrollInCourse = (selectedCourse: string) => API.enrollStudent({
   });
 
 // enrollInCourse('100848a2-b752-4e39-8a0c-76a7ec33ca90');
+
+// STUDENTS / HOME PAGE - GET - Finds all classes student enrolled in with nested assignments for each class
+// ---------------------------------------------------
+const findStudentCourses = () => API.getStudentCourses(sessionStorage.getItem('UID'))
+.then(({data}) => {
+  console.log(data)
+})
+.catch((error) => {
+  console.log(error)
+});
+
+// TEACHER / ASSIGNMENTS PAGE - GET - Finds all classes with nested assignments, based on TeacherId
+// ---------------------------------------------------
+const findTeacherCourses = () => API.getTeacherAssignments(sessionStorage.getItem('UID'))
+.then(({data}) => {
+  console.log(data)
+})
+.catch((error) => {
+  console.log(error)
+});
+
+// TEACHER / GRADE PAGE - GET - Finds all classes with nested student enrollments, then nested student info based on TeacherId
+// I CAN GIVE THIS IN A DIFFERENT FORMAT IF YOU WANT
+// ---------------------------------------------------
+const findTeacherStudents = () => API.getTeacherStudents(sessionStorage.getItem('UID'))
+.then(({data}) => {
+  console.log(data)
+})
+.catch((error) => {
+  console.log(error)
+});
+
 
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------

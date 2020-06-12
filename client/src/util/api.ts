@@ -11,6 +11,11 @@ interface StudentEnrollment {
   userId: string | null;
 }
 
+interface StudentAssignment {
+  courseId: string | null;
+  studentId: string | null;
+}
+
 // API Calls
 // ------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------
@@ -41,8 +46,28 @@ export default class Api {
     })
   }
 
+  getStudentCourses = (studentId:string | null) => {
+    return axios.get(`student/courses/${studentId}`);
+  }
+
   // Teacher Calls
   // ------------------------------------------------------------------------------
 
+  getTeacherAssignments = (teacherId:string | null) => {
+    return axios.get(`teacher/assignments/courses/${teacherId}`);
+  }
+
+  getTeacherStudents = (teacherId:string | null) => {
+    return axios.get(`teacher/enrollments/${teacherId}`);
+  }
+
+  getStudentAssignments = (student:StudentAssignment) => {
+    return axios.get(`teacher/enrollments/`, {
+      params: {
+        studentId: student.studentId,
+        courseId: student.courseId
+      }
+    });
+  }
 
 }
