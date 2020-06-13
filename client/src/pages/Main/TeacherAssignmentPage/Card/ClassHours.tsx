@@ -8,11 +8,11 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 300,
-        minWidth: 275,
-        minHeight: 200,
+        overflow: 'auto',
+        flexDirection: 'column',
         marginBottom: '16px',
         marginTop: '10px',
+        marginRight: '20px',
         marginLeft: '20px',
     },
     media: {

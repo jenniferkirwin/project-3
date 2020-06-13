@@ -9,8 +9,6 @@ import assignments from '../assignment.json';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 300,
-        minHeight: 200,
         overflow: 'auto',
         flexDirection: 'column',
         marginBottom: '16px',
