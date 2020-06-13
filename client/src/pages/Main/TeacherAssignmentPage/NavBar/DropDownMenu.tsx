@@ -3,6 +3,8 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
+
+
 export default function DropDownMenu() {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -26,8 +28,8 @@ export default function DropDownMenu() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose}></MenuItem>
-                <MenuItem onClick={handleClose}></MenuItem>
+                <MenuItem onClick={handleClose}>Courses</MenuItem>
+                <MenuItem onClick={handleClose}>Students</MenuItem>
                 <MenuItem onClick={handleClose}></MenuItem>
             </Menu>
         </div>
