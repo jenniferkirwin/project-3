@@ -166,7 +166,7 @@ const menuItems = [
       },
       {
         listIcon: <GradeIcon />,
-        listText: "Teacher Grade View",
+        listText: "Teacher Enrollments",
         listPath: "/teacher-grades",
       },
       {
