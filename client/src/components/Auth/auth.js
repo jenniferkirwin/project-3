@@ -15,26 +15,27 @@ export const AuthProvider = ({ children }) => {
       if (user) {
         user.getIdTokenResult(true).then(idTokenResult => {
           sessionStorage.setItem(`UID`, user.uid);
+          const UID = user.uid;
+          function loadUser() {
+            API.findUser(UID)
+              .then(res => {
+                sessionStorage.setItem('Role', res.data.RoleRoleId);
+                sessionStorage.setItem('School', res.data.SchoolSchoolId);
+              })
+              .catch(err => console.log(err));
+          };
+          loadUser();
         });
       }
       setCurrentUser(user)
       setPending(false)
-
-      const UID = user.uid;
-      function loadUser() {
-        API.findUser(UID)
-          .then(res => {
-            sessionStorage.setItem('Role', res.data.RoleRoleId);
-            sessionStorage.setItem('School', res.data.SchoolSchoolId);
-          })
-          .catch(err => console.log(err));
-      };
-      loadUser();
     });
   }, []);
 
   if(pending){
-    return <>Loading...</>
+    return (
+      <span>Loading...</span>
+    )
   }
 
   return (

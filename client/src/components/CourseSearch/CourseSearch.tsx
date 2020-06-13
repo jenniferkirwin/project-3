@@ -6,6 +6,8 @@ import CourseCard from "./courseCard";
 import Container from "@material-ui/core/Container" ; 
 import {DebounceInput} from 'react-debounce-input';
 import Paper from "@material-ui/core/Paper";
+import AppBar from '../Nav/AppBar';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -161,44 +163,47 @@ export default function SearchCourse(){
      )   
 
     return (
-      <>
-      <Container  maxWidth="lg">
-       <Grid container  spacing={1}  > 
-        <Grid  item xs={12} >
-          <Grid container  direction="row">
-            <Grid item xs={12} >
-              <Typography className={classes.courseTitle} variant="h4" gutterBottom>
-                 Courses
-              </Typography>
+      <div>
+        <AppBar />
+        <>
+        <Container  maxWidth="lg">
+        <Grid container  spacing={1}  > 
+          <Grid  item xs={12} >
+            <Grid container  direction="row">
+              <Grid item xs={12} >
+                <Typography className={classes.courseTitle} variant="h4" gutterBottom>
+                  Courses
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid item className={classes.centerInput} xs={12}> 
+          <label className={classes.my}>Search for courses</label> <br />
+            <DebounceInput
+                className={classes.inputs}
+                id="search" 
+                aria-describedby="search input" 
+                placeholder="Search Courses"
+                minLength={1}
+                debounceTimeout={700}
+                onChange={(e) => search(e.target.value)} />
+          </Grid>
+            { (show)? message : null  } 
+            <Grid container  
+              direction="row"
+              className={classes.mg}
+            > 
+              {  
+                courses.map( (course) => 
+                    <CourseCard key={course.courseID} courseID={course.courseID} courseName={course.courseName} classTime={course.time} topic={course.topic} hours={course.hours}></CourseCard>
+                )
+              }  
             </Grid>
           </Grid>
-          <Grid item className={classes.centerInput} xs={12}> 
-         <label className={classes.my}>Search for courses</label> <br />
-           <DebounceInput
-              className={classes.inputs}
-              id="search" 
-              aria-describedby="search input" 
-              placeholder="Search Courses"
-              minLength={1}
-              debounceTimeout={700}
-              onChange={(e) => search(e.target.value)} />
+          
         </Grid>
-          { (show)? message : null  } 
-          <Grid container  
-            direction="row"
-            className={classes.mg}
-           > 
-            {  
-              courses.map( (course) => 
-                  <CourseCard key={course.courseID} courseID={course.courseID} courseName={course.courseName} classTime={course.time} topic={course.topic} hours={course.hours}></CourseCard>
-               )
-            }  
-           </Grid>
-        </Grid>
-        
-       </Grid>
-       </Container>
-      </>
+        </Container>
+        </>
+      </div>
     )
 
 } 

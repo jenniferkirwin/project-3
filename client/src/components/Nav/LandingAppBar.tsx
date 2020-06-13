@@ -27,9 +27,9 @@ import HomeIcon from '@material-ui/icons/Home';
 import GradeIcon from '@material-ui/icons/Grade';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import SignedInLinks from '../Auth/Links/SignedInLinks.jsx'
-import SignedOutLinks from '../Auth/Links/SignedOutLinks.jsx'
-import { AuthContext } from "../Auth/auth.js";
+import SignedInLinks from './../Auth/Links/SignedInLinks.jsx'
+import SignedOutLinks from './../Auth/Links/SignedOutLinks.jsx'
+import { AuthContext } from "./../Auth/auth.js";
 import { NavLink } from 'react-router-dom'
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
@@ -166,7 +166,7 @@ let greetingString;
 
 type TParams = { id: string };
 
-export default function SearchAppBar() {
+export default function LandingAppBar() {
   const classes = useStyles();
 
   const { currentUser } = useContext(AuthContext);

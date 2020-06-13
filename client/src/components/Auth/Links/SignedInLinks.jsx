@@ -11,7 +11,7 @@ const SignedInLinks = () => {
         <button 
           className="btn waves-effect waves-light btn-small grey darken-3 z-depth-0" 
           style={{width: 150}}
-          onClick={() => app.auth().signOut()}
+          onClick={() => app.auth().signOut().then(sessionStorage.clear())}
         >
           Sign out
         </button>

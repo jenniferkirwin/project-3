@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import './App.css';
-import SearchAppBar from './components/Nav/AppBar'
 import LandingGrid from './components/LandingGrid/LandingGrid'
 
 //Authentication
@@ -29,7 +28,6 @@ class App extends Component {
       <AuthProvider>
         <BrowserRouter>
           <div className="App">
-            <SearchAppBar />
             <Switch>
               <PrivateRoute exact path='/'component={LandingGrid} />
               <Route path='/login' component={Login} />

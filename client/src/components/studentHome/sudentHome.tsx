@@ -8,6 +8,7 @@ import Calender from "../Calender/Calender";
 import Typography from "@material-ui/core/Typography";
 //import Nav from "../Nav/Nav";
 import Notifications from "../Notifications" ;
+import AppBar from '../Nav/AppBar';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -57,53 +58,56 @@ export default function StudentHome() {
     { title: 'event 5', date: '2020-06-03', url: "2020-06-03"}
   ]
   return (
-    <div className={classes.root} style={{paddingTop: 100}}>
-    <Box> 
-      <Grid container  spacing={1}  > 
-        <Grid  item xs={12}  sm={6}> 
-          <Grid container  direction="row">
-            <Grid xs={12} >
-              <Typography className={classes.courseTitle} variant="h5" gutterBottom>
-                 Courses
-              </Typography>
+    <div>
+      <AppBar />
+      <div className={classes.root} style={{paddingTop: 100}}>
+      <Box> 
+        <Grid container  spacing={1}  > 
+          <Grid  item xs={12}  sm={6}> 
+            <Grid container  direction="row">
+              <Grid xs={12} >
+                <Typography className={classes.courseTitle} variant="h5" gutterBottom>
+                  Courses
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid container  
+              direction="row"
+              className={classes.mg}
+            >  
+                <StudentCard /> 
+                <StudentCard />
+                <StudentCard /> 
+                <StudentCard /> 
             </Grid>
           </Grid>
-          <Grid container  
-            direction="row"
-            className={classes.mg}
-           >  
-              <StudentCard /> 
-              <StudentCard />
-              <StudentCard /> 
-              <StudentCard /> 
+        <Grid  item xs={12} sm={6} spacing={1}> 
+        <Grid xs={12} >
+                <Typography className={classes.courseTitle} variant="h5" gutterBottom>
+                  Notifications
+                </Typography>
+              </Grid> 
+              <Grid item xs={12}>
+                <Box className={classes.ntf} >
+                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
+                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
+                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
+                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
+                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
+                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
+                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
+
+
+                  </Box>
+                <Box m={10} >This has the day events and any current notifcations</Box>
+              </Grid>
+              <Grid item xs={12}>
+                <Calender event={example} />
+              </Grid>
           </Grid>
-        </Grid>
-       <Grid  item xs={12} sm={6} spacing={1}> 
-       <Grid xs={12} >
-              <Typography className={classes.courseTitle} variant="h5" gutterBottom>
-                 Notifications
-              </Typography>
-            </Grid> 
-            <Grid item xs={12}>
-              <Box className={classes.ntf} >
-                <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-
-
-                </Box>
-              <Box m={10} >This has the day events and any current notifcations</Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Calender event={example} />
-            </Grid>
-        </Grid>
-     </Grid>
-     </Box>
+      </Grid>
+      </Box>
+      </div>
     </div>
   );
 }
