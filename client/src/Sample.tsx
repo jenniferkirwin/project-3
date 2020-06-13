@@ -66,7 +66,6 @@ const findTeacherStudents = () => API.getTeacherStudents(sessionStorage.getItem(
   console.log(error)
 });
 
-
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
 
@@ -74,7 +73,7 @@ const Sample = () => {
 
     return (
       <div>
-
+        
       </div>  
     );
 }
