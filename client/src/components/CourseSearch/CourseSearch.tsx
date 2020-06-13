@@ -7,6 +7,8 @@ import Container from "@material-ui/core/Container" ;
 import {DebounceInput} from 'react-debounce-input';
 import Paper from "@material-ui/core/Paper";
 import AppBar from '../Nav/AppBar';
+import { Redirect } from "react-router";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -161,6 +163,15 @@ export default function SearchCourse(){
           </Typography>   
        </Grid>
      )   
+
+     let userRoleId = sessionStorage.Role;
+     //Student Role: f21db5e4-d63c-4736-9098-04bf4da0ee9e
+     //Teacher Role: 5ede9c42-1f1f-4425-8de4-affe508b5adb
+   
+     if (userRoleId !== "f21db5e4-d63c-4736-9098-04bf4da0ee9e") {
+       return <Redirect to="/" />;
+     }
+     
 
     return (
       <div>

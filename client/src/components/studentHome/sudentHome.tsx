@@ -9,6 +9,8 @@ import Typography from "@material-ui/core/Typography";
 //import Nav from "../Nav/Nav";
 import Notifications from "../Notifications" ;
 import AppBar from '../Nav/AppBar';
+import { Redirect } from "react-router";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -57,6 +59,15 @@ export default function StudentHome() {
     { title: 'event 10', date: '2020-05-20', url: "2020-05-20" },
     { title: 'event 5', date: '2020-06-03', url: "2020-06-03"}
   ]
+
+  let userRoleId = sessionStorage.Role;
+  //Student Role: f21db5e4-d63c-4736-9098-04bf4da0ee9e
+  //Teacher Role: 5ede9c42-1f1f-4425-8de4-affe508b5adb
+
+  if (userRoleId !== "f21db5e4-d63c-4736-9098-04bf4da0ee9e") {
+    return <Redirect to="/" />;
+  }
+
   return (
     <div>
       <AppBar />
