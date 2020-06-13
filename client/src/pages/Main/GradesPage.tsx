@@ -1,7 +1,7 @@
 // Dependencies
 // ------------------------------------------------------------------
 // ------------------------------------------------------------------
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import GradesGrid from './TeacherAssignmentPage/LandingGrid/GradesGrid';
 import TeacherAppBar from './TeacherAssignmentPage/NavBar/index';
 import { Redirect } from "react-router";
@@ -13,24 +13,18 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 // Connecting to API
-// import APIUtil from '../../util/api';
-// const API = new APIUtil;
+import APIUtil from '../../util/api';
+const API = new APIUtil();
 
-
-// interface CourseLayout {
-//   courseId: string;
-//   courseName: string;
-// }
-
-// interface CourseAPICall {
-//   Enrollments: Array<object>;
-//   SchoolSchoolId: string;
-//   UserUserId: string;
-//   courseId: string;
-//   courseName: string;
-//   createdAt: string;
-//   updatedAt: string;
-// }
+interface CourseAPICall {
+  Enrollments: Array<object>;
+  SchoolSchoolId: string;
+  UserUserId: string;
+  courseId: string;
+  courseName: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
 // Functions
 // ------------------------------------------------------------------
@@ -43,48 +37,13 @@ createStyles({
     formControl: {
       margin: theme.spacing(1),
       minWidth: 120,
-      marginTop: '150px',
+      marginTop: '125px',
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
   }),
 );
-
-// // Course Data
-
-// let courseData: CourseAPICall | any = [];
-
-// // Calling API
-// const findTeacherStudents = () => API.getTeacherStudents(sessionStorage.getItem('UID'))
-// .then(({data}:any | null) => {
-//   console.log(data)
-//   courseData = data
-// })
-// .catch((error:any) => {
-//   console.log(error)
-// });
-
-// findTeacherStudents();
-
-const courseData: any = [
-  {
-    "courseId": "014ccfc5-d8d0-4e2b-9d23-92010f4a4be3",
-    "courseName": "Another Hogwarts Class",
-    "SchoolSchoolId": "638542ac-6c0f-4b7a-b8f0-5af47c134eb0",
-    "UserUserId": "FdI3G6lC5sUX8A2Tp0ReRp6TSc32",
-    "updatedAt": "2020-06-13T16:55:43.868Z",
-    "createdAt": "2020-06-13T16:55:43.868Z"
-},
-{
-  "courseId": "014ccfc5-d8d0-4e2b-9d23-92010f4a4be33",
-  "courseName": "Another Hogwarts Class 2",
-  "SchoolSchoolId": "638542ac-6c0f-4b7a-b8f0-5af47c134eb0",
-  "UserUserId": "FdI3G6lC5sUX8A2Tp0ReRp6TSc32",
-  "updatedAt": "2020-06-13T16:55:43.868Z",
-  "createdAt": "2020-06-13T16:55:43.868Z"
-}
-]
 
 // React Object that is exported
 // ------------------------------------------------------------------
@@ -95,11 +54,28 @@ const GradesPage = () => {
   // Constants & Logic
 
   const classes = useStyles();
-  const [courseSelect, setCourseSelect] = React.useState('');
+  const [courseSelect, setCourseSelect] = useState('');
+  const [courses, setCourses] = useState([]);
 
+ // API Call to get Classes
+  useEffect(() => {
+    API.getTeacherStudents(sessionStorage.getItem('UID'))
+    .then(({data}:any | null) => {
+      console.log(data)
+      setCourses(data)
+    })
+    .catch((error:any) => {
+      console.log(error)
+    });
+  }, []);
+
+  // Updates Menu Item on Select
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setCourseSelect(event.target.value as string);
   };
+
+
+  // Render Logic
 
   let userRoleId = sessionStorage.Role;
 
@@ -123,7 +99,7 @@ const GradesPage = () => {
             label="Select Course"
           >
             {
-              courseData.map((course:any, index:any) =>
+              courses.map((course:CourseAPICall, index:any) =>
                 <MenuItem key={course.courseId} value={course.courseName}>{course.courseName}</MenuItem>
             )}
           </Select>
