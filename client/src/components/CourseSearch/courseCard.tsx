@@ -8,6 +8,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Box from "@material-ui/core/Box" ; 
 import Modal from "@material-ui/core/Modal";
 
+import APIUtil from './../../util/api';
+const API = new APIUtil;
+
 const useStyles = makeStyles((theme) => ({
     root: {
       maxWidth:  300,  //345,
@@ -57,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   }) );
 interface courseProps {
   courseName: string,
-  courseID: string,
+  courseId: string,
   topic: string,
   hours: number,
   classTime: string
@@ -68,8 +71,10 @@ interface courseProps {
       topic: "Bio 101 : \n This course covers fundementals of biologoy.",
       Hours: "8",
 */
-export default function CourseCard({courseName, courseID , topic, hours, classTime }:courseProps ){
-    const classes = useStyles();
+
+// export default function CourseCard({courseName, courseID , topic, hours, classTime }:courseProps ){
+export default function CourseCard({ courseName, courseId }:courseProps ){
+  const classes = useStyles();
     const [open, setOpen] = React.useState(false) ;
 
      //also add context stuff
@@ -85,32 +90,42 @@ export default function CourseCard({courseName, courseID , topic, hours, classTi
         <div  className={classes.paper}>
           <h2 id="simple-modal-title">{ courseName }</h2>
           <p id="simple-modal-description" >
-            Class time: { classTime }<br /> 
-       
-            Class decption: { topic }
+            {/* Class time: { classTime }<br /> 
+            Class description: { courseId } <br /> */}
+            Class time: 9 AM - 11 AM <br /> 
+            Class description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper tristique mi, id convallis felis. Praesent vestibulum, neque non tristique facilisis, mi mauris fermentum velit, ut iaculis libero metus sit amet massa.
          </p>
         </div>  
       );
-    const addCourse = (id:string) => {
-        console.log("added course: " + id);
-        //call post axios function to post with id 
-    }
+    const addCourse = (selectedCourse: string) => API.enrollStudent({
+      courseId: selectedCourse,
+      userId: sessionStorage.getItem('UID')
+    })
+      .then(({data}) => {
+        console.log({data})
+      })
+      .catch((error) => {
+        console.log(error)
+    });
+    
     return (
      <>
-      <Card key={courseID} className={classes.root}  elevation={5} >
+      <Card key={courseId} className={classes.root}  elevation={5} >
         <CardContent>
           <Typography className={classes.title} gutterBottom variant="h5" component="h2">
             { courseName }
           </Typography>
           <Box >  
             <Typography className={classes.courseTitle} variant="body2" gutterBottom>
-                Scheduled time: { classTime } <br/>
-                Course credit hours: { hours } <br /> 
+                {/* Scheduled time: { classTime } <br/>
+                Course credit hours: { hours } <br />  */}
+                Scheduled time: 9 AM - 11 AM <br/>
+                Course credit hours: 8 <br /> 
             </Typography> 
          </Box>
         </CardContent>
         <CardActions>
-            <Button onClick={() => addCourse(courseID) } size="small"  variant="outlined" color="primary">
+            <Button onClick={() => addCourse(courseId) } size="small"  variant="outlined" color="primary">
                 Add Course
             </Button> 
             <Button size="small" onClick={()=> handleOpen()}  variant="outlined" color="primary">

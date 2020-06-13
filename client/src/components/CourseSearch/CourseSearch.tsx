@@ -9,7 +9,8 @@ import Paper from "@material-ui/core/Paper";
 import AppBar from '../Nav/AppBar';
 import { Redirect } from "react-router";
 
-
+import APIUtil from './../../util/api';
+const API = new APIUtil;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -66,45 +67,53 @@ const useStyles = makeStyles((theme) => ({
 }) );
  
 
-const data = [
+let courseData = [
     {
       courseName:"Art 202", 
-      courseID: "12345",
+      courseId: "12345",
       topic: "Working with clay and glass. We use a kiln to make diffreent projects",
       hours: 8,
       time: "1:00pm to 2:00pm"
     },
     {
       courseName:"Math 101", 
-      courseID: "12745",
+      courseId: "12745",
       topic: "Elementary algebra to abstract algebra will be covered in this course.",
       hours: 8,
       time:"9:00am to 10:00am"
     },
     {
       courseName:"CS 101", 
-      courseID: "12245",
+      courseId: "12245",
       topic: "fundementals of progrmaming. This course will cover basic like loops, if and switch statements, and basic data typse to object oriented programming.",
       hours: 8,
       time: "11:00am to 12:00"
     },
     {
       courseName:"Bio 101", 
-      courseID: "67899",
+      courseId: "67899",
       topic: "This course covers fundementals of biologoy.",
       hours: 8 ,
       time:"10:00am -11:00am"
     },
-    
-
   ];
 
+const foundCourses = () => API.getCourses(sessionStorage.getItem('School'))
+  .then(({data}) => {
+    console.log(data)
+    courseData = data;
+  })
+  .catch((error) => {
+    console.log(error)
+  });
+
+foundCourses();
 
 export default function SearchCourse(){
     const classes = useStyles();
-    const [courses, setCourses] = React.useState(data); 
+    const [courses, setCourses] = React.useState(courseData); 
     //orginal data serbed from ajax basically static 
-    const [ ogData ] = React.useState(data);
+    const [ ogData ] = React.useState(courseData);
     const [show, setShow] = React.useState(false);
     //yeah any just becuase of lack of time to define a few interfaces 
     const filterTitle = (text:string):Array<any> => {
@@ -128,7 +137,7 @@ export default function SearchCourse(){
   return filtered ;
     }
 
-    //call filters based on returens from other filters 
+    //call filters based on returns from other filters 
     const filter = (text:string) =>{
         // filter title filters based on  coursename 
         let courseText = filterTitle(text); 
@@ -143,7 +152,6 @@ export default function SearchCourse(){
            }else{
              setCourses(testTime);
            }
-           //here is where we will add future filters such as by time
         }  
    }
 
@@ -205,7 +213,7 @@ export default function SearchCourse(){
             > 
               {  
                 courses.map( (course) => 
-                    <CourseCard key={course.courseID} courseID={course.courseID} courseName={course.courseName} classTime={course.time} topic={course.topic} hours={course.hours}></CourseCard>
+                    <CourseCard key={course.courseId} courseId={course.courseId} courseName={course.courseName} classTime={course.time} topic={course.topic} hours={course.hours}></CourseCard>
                 )
               }  
             </Grid>

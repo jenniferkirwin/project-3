@@ -34,10 +34,8 @@ class App extends Component {
               <Route path='/createaccount' component={CreateAccount} />
               {/*<Route path ='*'><Redirect to='/' /></Route>*/}
 
-              <PrivateRoute exact path='/student-home' component={StudentHome} />
               <PrivateRoute exact path='/student-course-search' component={CourseSearch} />
               
-              <PrivateRoute path='/teacher-home' component={MainTeacher} />
               <PrivateRoute path='/teacher-grades' component={GradesPage} />
               <PrivateRoute path='/teacher-class-hours' component={ClassHoursPage} />
               <PrivateRoute path='/teacher-upload-assignment' component={UploadAssign} />

@@ -10,8 +10,6 @@ import submitted from '../submitted.json';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 300,
-        minHeight: 200,
         marginBottom: '16px',
         marginTop: '10px',
         marginRight: '20px',

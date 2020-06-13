@@ -157,7 +157,7 @@ const menuItems = [
     {
         listIcon: <HomeIcon />,
         listText: "Teacher Home",
-        listPath: "/teacher-home",
+        listPath: "/",
       },
       {
         listIcon: <AssignmentIcon />,
@@ -166,7 +166,7 @@ const menuItems = [
       },
       {
         listIcon: <GradeIcon />,
-        listText: "Teacher Grade View",
+        listText: "Teacher Enrollments",
         listPath: "/teacher-grades",
       },
       {
