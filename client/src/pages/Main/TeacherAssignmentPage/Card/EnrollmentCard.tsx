@@ -5,8 +5,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import submitted from '../submitted.json';
-
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,31 +34,33 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function GradesCard() {
+export default function EnrollmentCard() {
 
     const classes = useStyles();
 
-    return (
-
+    return(
         <div>
-            {submitted.map((submit) => (
-                <Card className={classes.root}>
-                    <CardContent>
-                        <div key={submit.id}>
-                            <Typography className={classes.title} gutterBottom variant="h5" component="h2">
-                                {submit.submittedId}
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                {submit.submittedContent}
-                            </Typography>
-                            <h3>{submit.grade}</h3>
-                        </div>
-                    </CardContent>
-                    <CardActions>
-                        <Button size="small">Grades</Button>
-                    </CardActions>
-                </Card>
-            ))}
+
         </div>
-    );
+    )
+
 }
+
+// {submitted.map((submit) => (
+//     <Card className={classes.root}>
+//         <CardContent>
+//             <div key={submit.id}>
+//                 <Typography className={classes.title} gutterBottom variant="h5" component="h2">
+//                     {submit.submittedId}
+//                 </Typography>
+//                 <Typography variant="body2" color="textSecondary" component="p">
+//                     {submit.submittedContent}
+//                 </Typography>
+//                 <h3>{submit.grade}</h3>
+//             </div>
+//         </CardContent>
+//         <CardActions>
+//             <Button size="small">Grades</Button>
+//         </CardActions>
+//     </Card>
+// ))}
