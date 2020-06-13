@@ -8,18 +8,33 @@ import Typography from '@material-ui/core/Typography';
 import submitted from '../submitted.json';
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
-        minWidth: 275,
+        maxWidth: 300,
         minHeight: 200,
+        marginBottom: '16px',
+        marginTop: '10px',
+        marginRight: '20px',
+        marginLeft: '20px',
+    },
+    media: {
+        height: 140,
     },
     title: {
+        backgroundColor: "darkblue",
         fontsize: 14,
+        color: 'white',
+        padding: theme.spacing(2),
+        borderTop: '2px solid darkblue',
+    },
+    size: {
+        width: "100%",
+        textAlign: "center",
     },
     pos: {
         marginBottom: 12,
     },
-});
+}));
 
 export default function GradesCard() {
 
@@ -32,8 +47,12 @@ export default function GradesCard() {
                 <Card className={classes.root}>
                     <CardContent>
                         <div key={submit.id}>
-                            <h1>{submit.submittedId}</h1>
-                            <p>{submit.submittedContent}</p>
+                            <Typography className={classes.title} gutterBottom variant="h5" component="h2">
+                                {submit.submittedId}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                {submit.submittedContent}
+                            </Typography>
                             <h3>{submit.grade}</h3>
                         </div>
                     </CardContent>
