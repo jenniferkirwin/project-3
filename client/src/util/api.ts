@@ -16,6 +16,10 @@ interface StudentAssignment {
   studentId: string | null;
 }
 
+interface SubmittedAssignment {
+  submittedContent: string;
+}
+
 // API Calls
 // ------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------
@@ -27,12 +31,14 @@ export default class Api {
   // Student Calls
   // ------------------------------------------------------------------------------
 
-  getAssignments = () => {
-    return axios.get('/api/assignments');
+  getAssignments = (courseId: string) => {
+    return axios.get(`/student/assignments/${courseId}`);
   }
 
-  submitAssignment = (submittedAssignment: object) => {
-    return axios.post('/api/assignments/submit', submittedAssignment)
+  submitAssignment = (submitted: SubmittedAssignment) => {
+    return axios.post('/student/submit', {
+      submittedContent: submitted.submittedContent
+    })
   }
 
   getCourses = (foundSchoolId:string | null) => {

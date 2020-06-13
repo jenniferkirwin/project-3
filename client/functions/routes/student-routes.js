@@ -11,7 +11,7 @@ const studentController = require('../controllers/student-controller')
 // ---------------------------------------------------------------------------
 
 router
-  .route('/')
+  .route('/submit')
   .post(studentController.createSubmit);
 
 router
