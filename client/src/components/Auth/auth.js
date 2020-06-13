@@ -3,7 +3,6 @@ import app from "./../../config/fbConfig.js";
 import API from './../../util/authApi';
 
 //Propagate auth data through whole react component tree
-
 export const AuthContext = React.createContext();
 
 //Store authentication status
@@ -15,28 +14,28 @@ export const AuthProvider = ({ children }) => {
     app.auth().onAuthStateChanged((user) => {
       if (user) {
         user.getIdTokenResult(true).then(idTokenResult => {
-          let userEmail = idTokenResult.claims.email;
           sessionStorage.setItem(`UID`, user.uid);
+          const UID = user.uid;
+          function loadUser() {
+            API.findUser(UID)
+              .then(res => {
+                sessionStorage.setItem('Role', res.data.RoleRoleId);
+                sessionStorage.setItem('School', res.data.SchoolSchoolId);
+              })
+              .catch(err => console.log(err));
+          };
+          loadUser();
         });
       }
       setCurrentUser(user)
       setPending(false)
-
-      const UID = user.uid;
-      function loadUser() {
-        API.findUser(UID)
-          .then(res => {
-            sessionStorage.setItem('Role', res.data.RoleRoleId);
-            sessionStorage.setItem('School', res.data.SchoolSchoolId);
-          })
-          .catch(err => console.log(err));
-      };
-      loadUser();
     });
   }, []);
 
   if(pending){
-    return <>Loading...</>
+    return (
+      <span>Loading...</span>
+    )
   }
 
   return (

@@ -5,7 +5,7 @@ import TeacherAppBar from './TeacherAssignmentPage/NavBar/index';
 const GradesPage = () => {
     return(
         <div>
-            {/* <TeacherAppBar /> */}
+            <TeacherAppBar />
             <GradesGrid />
         </div>
     );
