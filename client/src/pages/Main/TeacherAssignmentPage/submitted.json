@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "submittedId": "1",
     "submittedContent": "I am some submitted content #1",
     "grade": "A+",
@@ -7,6 +8,7 @@
     "assignmentId": "1"
   },
   {
+    "id": 2,
     "submittedId": "2",
     "submittedContent": "I am some submitted content #2",
     "grade": "A+",
@@ -14,6 +16,7 @@
     "assignmentId": "2"
   },
   {
+    "id": 3,
     "submittedId": "3",
     "submittedContent": "I am some submitted content #3",
     "grade": "A+",

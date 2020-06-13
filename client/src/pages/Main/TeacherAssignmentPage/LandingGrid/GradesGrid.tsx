@@ -9,6 +9,8 @@ import Grid from '@material-ui/core/Grid';
 import GradesCard from '../Card/GradesCard';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
+// import CirclesBackground from "./Circles";
+
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -46,36 +48,27 @@ export default function GradesGrid() {
 
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
-    return(
+    return (
         <div>
+            
+                <main className={classes.content}>
+                
+                    <div className={classes.appBarSpacer} />
+                    <Container maxWidth="lg" className={classes.container}>
+                        <Grid container spacing={3}>
 
-            <main className={classes.content}>
-                <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
-                    <Grid container spacing={3}>
+                            <Grid item xs={12} md={8} lg={9}>
 
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
                                 <GradesCard />
-                            </Paper>
-                        </Grid>
 
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
-                                <GradesCard />
-                            </Paper>
-                        </Grid>
+                            </Grid>
 
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
-                                <GradesCard />
-                            </Paper>
                         </Grid>
+                    </Container>
+                </main>
+            
 
-                    </Grid>
-                </Container>
-            </main>
 
         </div>
-    ); 
+    );
 }
