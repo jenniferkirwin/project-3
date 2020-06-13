@@ -42,16 +42,16 @@ export default function ClassHoursCard() {
         <Card className={classes.root}>
             <CardContent>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Class Hours Title
+                    Upcoming Meeting
                 </Typography>
                 <Typography variant="h5" component="h2">
-                    Name of Student
+                    Harry Potter
                 </Typography>
                 <Typography className={classes.pos} color="textSecondary">
-                    Date of meeting
+                    6/24/2020
                 </Typography>
                 <Typography variant="body2" component="p">
-                    Description of the meeting
+                An advisory meeting with the student to discuss upcoming course load and extracurricular activities.
                 </Typography>
             </CardContent>
             <CardActions>
