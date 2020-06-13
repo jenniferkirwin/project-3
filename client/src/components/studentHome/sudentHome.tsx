@@ -10,8 +10,10 @@ import Typography from "@material-ui/core/Typography";
 import Notifications from "../Notifications" ;
 import AppBar from '../Nav/AppBar';
 import { Redirect } from "react-router";
+import APIUtil from '../../util/api';
+import CourseCard from '../CourseSearch/courseCard';
 
-
+const API = new APIUtil;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,30 +44,46 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '20px',
 },
 
-
 }));
-//  <Paper elevation={3} className={classes.paper}> </Paper>
-//      <Nav/>
-export default function StudentHome() {
-  const classes = useStyles();
-  const example =  [
-    { title: 'event 1', date: '2020-05-01', url: "2020-05-01" },
-    { title: 'event 2', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 4', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 6', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 8', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 12', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 14', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 10', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 5', date: '2020-06-03', url: "2020-06-03"}
-  ]
 
-  let userRoleId = sessionStorage.Role;
-  //Student Role: f21db5e4-d63c-4736-9098-04bf4da0ee9e
-  //Teacher Role: 5ede9c42-1f1f-4425-8de4-affe508b5adb
+// interface StudentCardProps {
+  //   courseName: string,
+  // }
+  //  <Paper elevation={3} className={classes.paper}> </Paper>
+  //      <Nav/>
+  export default function StudentHome() {
+    const classes = useStyles();
+    const example =  [
+      { title: 'event 1', date: '2020-05-01', url: "2020-05-01" },
+      { title: 'event 2', date: '2020-05-20', url: "2020-05-20" },
+      { title: 'event 4', date: '2020-05-20', url: "2020-05-20" },
+      { title: 'event 6', date: '2020-05-20', url: "2020-05-20" },
+      { title: 'event 8', date: '2020-05-20', url: "2020-05-20" },
+      { title: 'event 12', date: '2020-05-20', url: "2020-05-20" },
+      { title: 'event 14', date: '2020-05-20', url: "2020-05-20" },
+      { title: 'event 10', date: '2020-05-20', url: "2020-05-20" },
+      { title: 'event 5', date: '2020-06-03', url: "2020-06-03"}
+    ]
+    
+    let userRoleId = sessionStorage.Role;
+    //Student Role: f21db5e4-d63c-4736-9098-04bf4da0ee9e
+    //Teacher Role: 5ede9c42-1f1f-4425-8de4-affe508b5adb
+    
+    // if (userRoleId !== "f21db5e4-d63c-4736-9098-04bf4da0ee9e") {
+    //   return <Redirect to="/" />;
+    // }
+    
+    const [courses, setCourses] = React.useState([])
 
-  if (userRoleId !== "f21db5e4-d63c-4736-9098-04bf4da0ee9e") {
-    return <Redirect to="/" />;
+  React.useEffect(() => {
+    loadCourses()
+  }, [])
+
+  function loadCourses() {
+    API.getStudentCourses(sessionStorage.getItem('UID'))
+        .then(res => setCourses(res.data)
+        )
+        .catch(err => console.log(err));
   }
 
   return (
@@ -86,10 +104,20 @@ export default function StudentHome() {
               direction="row"
               className={classes.mg}
             >  
-                <StudentCard /> 
+              {/* {courses.length ? ( */}
+                {courses.map(course => {
+                  return (
+                    <StudentCard {...course}/>
+                  );
+                })}
+            {/* ) : (
+              <h3>No Courses to Display</h3>
+            )} */}
+
+                {/* <StudentCard /> 
                 <StudentCard />
                 <StudentCard /> 
-                <StudentCard /> 
+                <StudentCard />  */}
             </Grid>
           </Grid>
         <Grid  item xs={12} sm={6} spacing={1}> 

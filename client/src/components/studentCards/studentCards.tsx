@@ -48,16 +48,20 @@ interface StudentCard  {
   Notifcation: Notification[],
 }
 
-export default function StudenCard() {
+interface StudentCardProps {
+  courseName: string,
+}
+
+export default function StudenCard({courseName}:StudentCardProps) {
     const classes = useStyles();
     return (
       <Card className={classes.root}  elevation={5} >
         <CardContent>
         <Typography className={classes.title} gutterBottom variant="h5" component="h2">
-          Title of class
+          {courseName}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          This is a card for each class. This area might/will be a notifcation area idk for now. below click will be a route for now a button
+          {/* This is a card for each class. This area might/will be a notifcation area idk for now. below click will be a route for now a button */}
         </Typography>
       </CardContent>
       <CardActions>
