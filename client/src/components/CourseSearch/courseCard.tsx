@@ -68,8 +68,10 @@ interface courseProps {
       topic: "Bio 101 : \n This course covers fundementals of biologoy.",
       Hours: "8",
 */
-export default function CourseCard({courseName, courseID , topic, hours, classTime }:courseProps ){
-    const classes = useStyles();
+
+// export default function CourseCard({courseName, courseID , topic, hours, classTime }:courseProps ){
+export default function CourseCard({courseName, courseID }:courseProps ){
+  const classes = useStyles();
     const [open, setOpen] = React.useState(false) ;
 
      //also add context stuff
@@ -85,9 +87,10 @@ export default function CourseCard({courseName, courseID , topic, hours, classTi
         <div  className={classes.paper}>
           <h2 id="simple-modal-title">{ courseName }</h2>
           <p id="simple-modal-description" >
-            Class time: { classTime }<br /> 
-       
-            Class decption: { topic }
+            {/* Class time: { classTime }<br /> 
+            Class decption: { topic } */}
+            Class time: 9 AM - 11 AM <br /> 
+            Class description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper tristique mi, id convallis felis. Praesent vestibulum, neque non tristique facilisis, mi mauris fermentum velit, ut iaculis libero metus sit amet massa.
          </p>
         </div>  
       );
@@ -104,8 +107,10 @@ export default function CourseCard({courseName, courseID , topic, hours, classTi
           </Typography>
           <Box >  
             <Typography className={classes.courseTitle} variant="body2" gutterBottom>
-                Scheduled time: { classTime } <br/>
-                Course credit hours: { hours } <br /> 
+                {/* Scheduled time: { classTime } <br/>
+                Course credit hours: { hours } <br />  */}
+                Scheduled time: 9 AM - 11 AM <br/>
+                Course credit hours: 8 <br /> 
             </Typography> 
          </Box>
         </CardContent>

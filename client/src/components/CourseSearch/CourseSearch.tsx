@@ -9,6 +9,8 @@ import Paper from "@material-ui/core/Paper";
 import AppBar from '../Nav/AppBar';
 import { Redirect } from "react-router";
 
+import APIUtil from './../../util/api';
+const API = new APIUtil;
 
 
 const useStyles = makeStyles((theme) => ({
@@ -66,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
 }) );
  
 
-const data = [
+let courseData = [
     {
       courseName:"Art 202", 
       courseID: "12345",
@@ -95,16 +97,24 @@ const data = [
       hours: 8 ,
       time:"10:00am -11:00am"
     },
-    
-
   ];
 
+const findStudentCourses = () => API.getStudentCourses(sessionStorage.getItem('UID'))
+  .then(({data}) => {
+    console.log(data)
+    courseData = data;
+  })
+  .catch((error) => {
+    console.log(error)
+  });
+
+findStudentCourses();
 
 export default function SearchCourse(){
     const classes = useStyles();
-    const [courses, setCourses] = React.useState(data); 
+    const [courses, setCourses] = React.useState(courseData); 
     //orginal data serbed from ajax basically static 
-    const [ ogData ] = React.useState(data);
+    const [ ogData ] = React.useState(courseData);
     const [show, setShow] = React.useState(false);
     //yeah any just becuase of lack of time to define a few interfaces 
     const filterTitle = (text:string):Array<any> => {
