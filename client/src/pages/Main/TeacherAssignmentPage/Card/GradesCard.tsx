@@ -5,6 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import submitted from '../submitted.json';
 
 
 const useStyles = makeStyles({
@@ -25,18 +26,35 @@ export default function GradesCard() {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root}>
-            <CardContent>
-                <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Overall Grade
-                </Typography>
-                <Typography variant="h5" component="h2">
-                    Name of Student
-                </Typography>
-            </CardContent>
-            <CardActions>
-                <Button size="small">Full list of grades</Button>
-            </CardActions>
-        </Card>
+
+        <div>
+            {submitted.map((submit) => (
+                <Card className={classes.root}>
+                    <CardContent>
+                        <div key={submit.id}>
+                            <h1>{submit.submittedId}</h1>
+                            <p>{submit.submittedContent}</p>
+                            <h3>{submit.grade}</h3>
+                        </div>
+                    </CardContent>
+                    <CardActions>
+                        <Button size="small">Grades</Button>
+                    </CardActions>
+                </Card>
+            ))}
+        </div>
+        // <Card className={classes.root}>
+        //     <CardContent>
+        //         <Typography className={classes.title} color="textSecondary" gutterBottom>
+        //             Overall Grade
+        //         </Typography>
+        //         <Typography variant="h5" component="h2">
+        //             Name of Student
+        //         </Typography>
+        //     </CardContent>
+        //     <CardActions>
+        //         <Button size="small">Full list of grades</Button>
+        //     </CardActions>
+        // </Card>
     );
 }
