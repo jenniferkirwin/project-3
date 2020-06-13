@@ -49,15 +49,15 @@ const useStyles = makeStyles((theme) => ({
 export default function StudentHome() {
   const classes = useStyles();
   const example =  [
-    { title: 'event 1', date: '2020-05-01', url: "2020-05-01" },
-    { title: 'event 2', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 4', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 6', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 8', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 12', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 14', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 10', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 5', date: '2020-06-03', url: "2020-06-03"}
+    { title: 'Tutoring', date: '2020-06-03', url: "2020-06-03" },
+    { title: 'Tutoring', date: '2020-06-10', url: "2020-06-10" },
+    { title: 'Tutoring', date: '2020-06-17', url: "2020-06-17" },
+    { title: 'Tutoring', date: '2020-06-24', url: "2020-06-24" },
+    { title: 'Graduation', date: '2020-06-30', url: "2020-06-30" },
+    { title: 'Presentation', date: '2020-06-15', url: "2020-06-15" },
+    { title: 'Advisor Meeting', date: '22020-06-11', url: "2020-06-11" },
+    { title: 'Class Event', date: '2020-06-26', url: "2020-06-26" },
+    { title: 'Project Due', date: '2020-06-12', url: "2020-06-12"}
   ]
 
   let userRoleId = sessionStorage.Role;
@@ -107,10 +107,8 @@ export default function StudentHome() {
                   <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
                   <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
                   <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-
-
-                  </Box>
-                <Box m={10} >This has the day events and any current notifcations</Box>
+                </Box>
+                <Box m={10} ></Box>
               </Grid>
               <Grid item xs={12}>
                 <Calender event={example} />
