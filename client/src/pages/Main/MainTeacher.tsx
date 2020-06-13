@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import ClassHoursCard from './TeacherAssignmentPage/Card/ClassHours';
 import GradesCard from './TeacherAssignmentPage/Card/GradesCard';
 import TeacherAssingmentCard from './TeacherAssignmentPage/Card/index';
+import TeacherAppBar from './TeacherAssignmentPage/NavBar/index';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -68,33 +69,36 @@ export default function Dashboard() {
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
     return (
-        <div className={classes.root}>
-            <CssBaseline />
-            <main className={classes.content}>
-                <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
-                    <Grid container spacing={3}>
-                        {/* Class Hours */}
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
-                                <ClassHoursCard />
-                            </Paper>
+        <div>
+            <TeacherAppBar />
+            <div className={classes.root}>
+                <CssBaseline />
+                <main className={classes.content}>
+                    <div className={classes.appBarSpacer} />
+                    <Container maxWidth="lg" className={classes.container}>
+                        <Grid container spacing={3}>
+                            {/* Class Hours */}
+                            <Grid item xs={12} md={8} lg={9}>
+                                <Paper className={fixedHeightPaper}>
+                                    <ClassHoursCard />
+                                </Paper>
+                            </Grid>
+                            {/* Student Grades */}
+                            <Grid item xs={12} md={4} lg={3}>
+                                <Paper className={fixedHeightPaper}>
+                                    <GradesCard />
+                                </Paper>
+                            </Grid>
+                            {/* Teacher Assignments */}
+                            <Grid item xs={12}>
+                                <Paper className={classes.paper}>
+                                    <TeacherAssingmentCard />
+                                </Paper>
+                            </Grid>
                         </Grid>
-                        {/* Student Grades */}
-                        <Grid item xs={12} md={4} lg={3}>
-                            <Paper className={fixedHeightPaper}>
-                                <GradesCard />
-                            </Paper>
-                        </Grid>
-                        {/* Teacher Assignments */}
-                        <Grid item xs={12}>
-                            <Paper className={classes.paper}>
-                                <TeacherAssingmentCard />
-                            </Paper>
-                        </Grid>
-                    </Grid>
-                </Container>
-            </main>
+                    </Container>
+                </main>
+            </div>
         </div>
     );
 }
