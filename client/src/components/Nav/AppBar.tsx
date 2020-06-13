@@ -184,7 +184,7 @@ export default function SearchAppBar() {
         {
           listIcon: <HomeIcon />,
           listText: "Student Home",
-          listPath: "/student-home",
+          listPath: "/",
         },
         {
           listIcon: <AssignmentIcon />,
@@ -203,7 +203,7 @@ export default function SearchAppBar() {
         {
           listIcon: <HomeIcon />,
           listText: "Teacher Home",
-          listPath: "/teacher-home",
+          listPath: "/",
         },
         {
           listIcon: <AssignmentIcon />,

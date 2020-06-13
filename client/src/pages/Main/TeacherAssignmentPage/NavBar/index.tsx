@@ -157,7 +157,7 @@ const menuItems = [
     {
         listIcon: <HomeIcon />,
         listText: "Teacher Home",
-        listPath: "/teacher-home",
+        listPath: "/",
       },
       {
         listIcon: <AssignmentIcon />,
