@@ -46,9 +46,6 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-// interface StudentCardProps {
-  //   courseName: string,
-  // }
   //  <Paper elevation={3} className={classes.paper}> </Paper>
   //      <Nav/>
   export default function StudentHome() {
@@ -65,15 +62,9 @@ const useStyles = makeStyles((theme) => ({
       { title: 'event 5', date: '2020-06-03', url: "2020-06-03"}
     ]
     
-    let userRoleId = sessionStorage.Role;
-    //Student Role: f21db5e4-d63c-4736-9098-04bf4da0ee9e
-    //Teacher Role: 5ede9c42-1f1f-4425-8de4-affe508b5adb
+  let userRoleId = sessionStorage.Role;
     
-    // if (userRoleId !== "f21db5e4-d63c-4736-9098-04bf4da0ee9e") {
-    //   return <Redirect to="/" />;
-    // }
-    
-    const [courses, setCourses] = React.useState([])
+  const [courses, setCourses] = React.useState([])
 
   React.useEffect(() => {
     loadCourses()
@@ -104,20 +95,11 @@ const useStyles = makeStyles((theme) => ({
               direction="row"
               className={classes.mg}
             >  
-              {/* {courses.length ? ( */}
                 {courses.map(course => {
                   return (
                     <StudentCard {...course}/>
                   );
                 })}
-            {/* ) : (
-              <h3>No Courses to Display</h3>
-            )} */}
-
-                {/* <StudentCard /> 
-                <StudentCard />
-                <StudentCard /> 
-                <StudentCard />  */}
             </Grid>
           </Grid>
         <Grid  item xs={12} sm={6} spacing={1}> 

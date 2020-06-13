@@ -61,7 +61,7 @@ export default function StudenCard({courseName}:StudentCardProps) {
           {courseName}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          {/* This is a card for each class. This area might/will be a notifcation area idk for now. below click will be a route for now a button */}
+          {/* Secondary information per class, can be adjusted later */}
         </Typography>
       </CardContent>
       <CardActions>
