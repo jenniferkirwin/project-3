@@ -6,18 +6,33 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
+        maxWidth: 300,
         minWidth: 275,
         minHeight: 200,
+        marginBottom: '16px',
+        marginTop: '10px',
+        marginLeft: '20px',
+    },
+    media: {
+        height: 140,
     },
     title: {
+        backgroundColor: "darkblue",
         fontsize: 14,
+        color: 'white',
+        padding: theme.spacing(2),
+        borderTop: '2px solid darkblue',
+    },
+    size: {
+        width: "100%",
+        textAlign: "center",
     },
     pos: {
         marginBottom: 12,
     },
-});
+}));
 
 export default function ClassHoursCard() {
 
