@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TeacherAssignmentCard from '../Card/index';
-import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -48,7 +47,7 @@ export default function TeacherPage() {
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
-                    <Grid container spacing={9}>
+                    <Grid container spacing={3}>
 
                         <Grid item xs={12} md={8} lg={9}>
 

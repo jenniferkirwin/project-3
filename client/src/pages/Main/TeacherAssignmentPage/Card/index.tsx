@@ -7,32 +7,33 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import assignments from '../assignment.json';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
-        minWidth: 275,
-        minHeight: 200,
         overflow: 'auto',
         flexDirection: 'column',
+        marginBottom: '16px',
+        marginTop: '10px',
+        marginRight: '20px',
+        marginLeft: '20px',
     },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
+    media: {
+        height: 140,
     },
     title: {
+        backgroundColor: "darkblue",
         fontSize: 14,
+        color: 'white',
+        padding: theme.spacing(2),
+        borderTop: '2px solid darkblue',
+    },
+    size: {
+        width: "100%",
+        textAlign: "center",
     },
     pos: {
         marginBottom: 12,
     },
-});
-
-// interface AssignmentProps {
-//     assignmentId: string
-//     assignmentText: string
-//     courseId: string
-// }
-
+}));
 
 export default function TeacherAssignmentCard() {
 
@@ -44,8 +45,12 @@ export default function TeacherAssignmentCard() {
                 <Card className={classes.root}>
                     <CardContent>
                     <div key={assignment.id}>
-                        <h1>{assignment.assignmentId}</h1>
-                        <p>{assignment.assignmentText}</p>
+                        <Typography className={classes.title} gutterBottom variant="h1">
+                            {assignment.assignmentId}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            {assignment.assignmentText}
+                        </Typography>
                     </div>
                     </CardContent>
                     <CardActions>
