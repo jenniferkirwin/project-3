@@ -61,12 +61,12 @@ module.exports = {
       db.Assignment
       .findAll({
         where: {
-          CourseCourseId: req.body.courseId
+          CourseCourseId: req.query.courseId
         },
         include: [{
           model: db.Submitted,
           where: {
-            UserUserId: req.body.studentId
+            UserUserId: req.query.studentId
           }
         }]
       })           

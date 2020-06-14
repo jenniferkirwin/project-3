@@ -76,4 +76,13 @@ export default class Api {
     });
   }
 
+  getStudentSubmitteds = (student:StudentAssignment) => {
+    return axios.get(`student/submit/`, {
+      params: {
+        studentId: student.studentId,
+        courseId: student.courseId
+      }
+    });
+  }
+
 }
