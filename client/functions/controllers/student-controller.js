@@ -56,6 +56,28 @@ module.exports = {
         res.sendStatus(500);
       })
     },
+
+    findSubmitted: (req, res) => {
+      db.Assignment
+      .findAll({
+        where: {
+          CourseCourseId: req.body.courseId
+        },
+        include: [{
+          model: db.Submitted,
+          where: {
+            UserUserId: req.body.studentId
+          }
+        }]
+      })           
+      .then((foundSubmitted) => {
+        res.status(200).json(foundSubmitted);
+      })
+      .catch((error) => {
+        console.error(error);
+        res.sendStatus(500);
+      })
+    },
   
     findAssignments: (req, res) => {
       db.Course
