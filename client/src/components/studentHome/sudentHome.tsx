@@ -63,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
     ]
         
   const [courses, setCourses] = React.useState([])
-  const [announcements, setAnnouncements] = React.useState([])
 
   let courseAnnouncements: { 
       CourseCourseId: string, 
@@ -73,13 +72,10 @@ const useStyles = makeStyles((theme) => ({
       updatedAt: string 
   }[] = [];
 
-  let individualAnnouncements: { 
-    CourseCourseId: string, 
-    announcementId: string, 
-    announcementText: string, 
-    createdAt: string, 
-    updatedAt: string 
-}[] = [];
+let individualAnnouncements: string[] = [];
+
+const [announcements, setAnnouncements] = React.useState([] as any)
+
 
   React.useEffect(() => {
     loadCourses();
@@ -94,14 +90,15 @@ const useStyles = makeStyles((theme) => ({
           })
         }).then(res => {
           return courseAnnouncements.forEach(function (value: any) {
-            // for (var i = 0, i < value.length; i++) {
               if (value.length>0) {
                 value.forEach(function (val: any) {
                   individualAnnouncements.push(val)
                 })
               }
           })
-        }).then(res => console.log(individualAnnouncements))
+        }).then(res => {
+          setAnnouncements(individualAnnouncements)
+        })
         .catch(err => console.log(err));
   }
 
@@ -138,13 +135,13 @@ const useStyles = makeStyles((theme) => ({
               </Grid> 
               <Grid item xs={12}>
                 <Box className={classes.ntf} >
-                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
+                  {announcements.map((announcement: any) => {
+                    return (
+                      // <p>Notification here</p>
+                      <Notifications {...announcement}/>
+                    );
+                  })}
+                  {/* <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" />  */}
                 </Box>
                 <Box m={10} ></Box>
               </Grid>

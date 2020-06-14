@@ -5,51 +5,107 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
-import Notification from "../interfaces/Notification";
+//import Notification from "../interfaces/Notification";
 import Box from '@material-ui/core/Box';
 import Modal from "@material-ui/core/Modal";
-/*
-might need to add context for since notifcation 
-will chagne depending on context 
-if its just the course notifcations or the general all notfication 
-Probably make it 
+import Typography from '@material-ui/core/Typography';
 
-context wrapper for each one 
-
-*/
 
 
 const useStyles = makeStyles((theme) => ({
-   
-    ntf: {
-        border: "1px solid #ececec",
-        marginBottom: "16px",
-        padding: "20px 20px",
-        boxShadow:"0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)"
-    },
-    course:{
-        marginLeft: "10px"
-    },
-    title:{
-        marginRight: "15%",
-        marginLeft: "15%"
-    },
-    paper: {
-        backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-      },
-      modal: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-   
-  
-  }) );
+  root: {
+    maxWidth: '100%',  //345,
+    marginBottom: '5px',
+    marginTop: '5px',
+    marginRight: '20px',
+    marginLeft: '20px',
+  },
+  media: {
+    height: 150,
+  },
+  title: {
+      // backgroundColor: "lightblue",
+      color: "black",
+      fontSize: "16px",
+      fontWeight: "bold"
+      // padding: theme.spacing(2),
+  },
+  text: {
+    color: "black",
+    fontSize: "16px",
+    fontStyle: "italic"
+  },
+  size: {
+      width:"100%",
+      textAlign: "center",
+  }
+}) );
 
- const Notifications: React.FC<Notification> = ({ title , body ,course, date} ) => {
+interface Notification  {
+  announcementText: string
+}
+
+interface NotificationProps {
+  CourseCourseId: string, 
+  announcementId: string, 
+  announcementText: string, 
+  createdAt: string, 
+  updatedAt: string 
+}
+
+
+export default function Notification({CourseCourseId, announcementText}:NotificationProps) {
+  const classes = useStyles();
+ 
+  return (
+    <Card className={classes.root}  elevation={4} >
+      <CardContent>
+      <Typography className={classes.text} variant="h5" component="h5">
+       {announcementText}
+      </Typography>
+      </CardContent>
+    </Card>
+  );
+};
+
+
+
+// Old Notifications ===================================================================
+//======================================================================================
+//======================================================================================
+
+/*const useStyles = makeStyles((theme) => ({
+   
+   ntf: {
+       border: "1px solid #ececec",
+       marginBottom: "16px",
+       padding: "20px 20px",
+       boxShadow:"0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)"
+   },
+   course:{
+       marginLeft: "10px"
+   },
+   title:{
+       marginRight: "15%",
+       marginLeft: "15%"
+   },
+   paper: {
+       backgroundColor: theme.palette.background.paper,
+       border: '2px solid #000',
+       boxShadow: theme.shadows[5],
+       padding: theme.spacing(2, 4, 3),
+     },
+     modal: {
+       display: 'flex',
+       alignItems: 'center',
+       justifyContent: 'center',
+     },
+  
+ 
+ }) );
+
+const Notifications: React.FC<Notification> = ({ title, body, course, date} ) => {
+
     const classes = useStyles();
     const [open, setOpen] = React.useState(false) ;
 
@@ -91,6 +147,6 @@ const useStyles = makeStyles((theme) => ({
      </Modal>
      </>
     )
-
 }
-export default Notifications;
+
+export default Notifications;*/
