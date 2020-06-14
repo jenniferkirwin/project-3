@@ -5,7 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import assignments from '../assignment.json';
+// import assignments from '../assignment.json';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,29 +35,40 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function TeacherAssignmentCard() {
+interface TeacherAssignment {
+    Assignment: {
+        createdAt: string;
+        email: string;
+        firstName: string;
+        lastName: string;
+        updatedAt: string;
+        userId: string;
+    };
+    UserUserId: string;
+    assignmentId: string;
+}
+
+export default function TeacherAssignmentCard({Assignment, UserUserId, assignmentId}:TeacherAssignment) {
 
     const classes = useStyles();
 
     return (
         <div>
-            {assignments.map((assignment) => (
-                <Card className={classes.root}>
-                    <CardContent>
-                    <div key={assignment.id}>
-                        <Typography className={classes.title} gutterBottom variant="h1">
-                            {assignment.assignmentId}
+            <Card className={classes.root}>
+                <CardContent>
+                    <div id={UserUserId}>
+                        <Typography className={classes.title} gutterBottom variant="h5" component="h2">
+                            {Assignment.firstName} {Assignment.lastName}
                         </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            {assignment.assignmentText}
+                        <Typography variant="body1" color="textSecondary" component="p">
+                            {Assignment.firstName}{Assignment.lastName}
                         </Typography>
                     </div>
-                    </CardContent>
-                    <CardActions>
-                        <Button size="small">Assignment</Button>
-                    </CardActions>
-                </Card>
-            ))}
+                </CardContent>
+                <CardActions>
+                    <Button size="small">Assignment</Button>
+                </CardActions>
+            </Card>
         </div>
     );
 }
