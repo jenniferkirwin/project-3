@@ -32,28 +32,32 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export default function EnrollmentGrid() {
+export default function EnrollmentGrid({Enrollments}:any) {
 
     const classes = useStyles();
 
+    console.log(Enrollments);
+
     return (
-        <div>
-            <main className={classes.content}>
+
+            
                 
-                <div className={classes.appBarSpacer} />
+                // <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={3}>
 
-                        <Grid item xs={12} md={8} lg={9}>
+                    {Enrollments !== undefined &&
+                      // <h2>Hello</h2>
+                      Enrollments.map((enrollment:any) => (
+                        <EnrollmentCard {...enrollment} key={enrollment.enrollmentId}/>
+                      ))
+                    }
 
-                            <EnrollmentCard />
-
-                        </Grid>
+                      
 
                     </Grid>
                 </Container>
-            </main>
-        </div>
+            
     )
 
 }

@@ -2,7 +2,7 @@
 // ------------------------------------------------------------------
 // ------------------------------------------------------------------
 import React, {useState, useEffect} from 'react';
-import GradesGrid from './TeacherAssignmentPage/LandingGrid/GradesGrid';
+import EnrollmentGrid from './TeacherAssignmentPage/LandingGrid/EnrollmentGrid';
 import TeacherAppBar from './TeacherAssignmentPage/NavBar/index';
 import { Redirect } from "react-router";
 // Material UI Components
@@ -25,6 +25,16 @@ interface CourseAPICall {
   createdAt: string;
   updatedAt: string;
 }
+
+// interface enrollmentAPICall {
+//   Enrollments: Array<object>;
+//   SchoolSchoolId: string;
+//   UserUserId: string;
+//   courseId: string;
+//   courseName: string;
+//   createdAt: string;
+//   updatedAt: string;
+// }
 
 // Functions
 // ------------------------------------------------------------------
@@ -56,12 +66,12 @@ const GradesPage = () => {
   const classes = useStyles();
   const [courseSelect, setCourseSelect] = useState('');
   const [courses, setCourses] = useState([]);
+  const [courseEnrollment, setCourseEnrollment] = useState({});
 
  // API Call to get Classes
   useEffect(() => {
     API.getTeacherStudents(sessionStorage.getItem('UID'))
     .then(({data}:any | null) => {
-      console.log(data)
       setCourses(data)
     })
     .catch((error:any) => {
@@ -72,6 +82,13 @@ const GradesPage = () => {
   // Updates Menu Item on Select
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setCourseSelect(event.target.value as string);
+    let test = courses.find((element:any) => {
+      return element.courseName === event.target.value
+    });
+    if (test) {
+      setCourseEnrollment(test);
+    };
+    
   };
 
 
@@ -100,12 +117,12 @@ const GradesPage = () => {
           >
             {
               courses.map((course:CourseAPICall, index:any) =>
-                <MenuItem key={course.courseId} value={course.courseName}>{course.courseName}</MenuItem>
+                <MenuItem key={course.courseId} id={course.courseId} value={course.courseName}>{course.courseName}</MenuItem>
             )}
           </Select>
         </FormControl>
 
-        <GradesGrid />
+        <EnrollmentGrid {...courseEnrollment} />
     </div>
   );
 }
