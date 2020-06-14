@@ -108,9 +108,10 @@ module.exports = {
           where: {
             [Op.or]: returnedCourses
           },
-          include: [{
-            model: db.Assignment,
-          }]
+          include: [
+            {model: db.Assignment},
+            {model: db.Announcement}
+          ]
         })        
         .then((foundCourses) => {
           res.status(200).json(foundCourses);
