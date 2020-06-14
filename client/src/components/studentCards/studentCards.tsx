@@ -52,7 +52,7 @@ interface StudentCardProps {
   courseName: string,
 }
 
-export default function StudenCard({courseName}:StudentCardProps) {
+export default function StudentCard({courseName}:StudentCardProps) {
     const classes = useStyles();
     return (
       <Card className={classes.root}  elevation={5} >

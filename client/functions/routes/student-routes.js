@@ -12,7 +12,8 @@ const studentController = require('../controllers/student-controller')
 
 router
   .route('/submit')
-  .post(studentController.createSubmit);
+  .post(studentController.createSubmit)
+  .get(studentController.findSubmitted);
 
 router
   .route('/courses/:studentId')
