@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 // import assignments from '../assignment.json';
 
+import Form from '../Form';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     overflow: 'auto',
@@ -52,7 +54,7 @@ interface TeacherAssignment {
 
 }
 
-export default function TeacherAssignmentCard({ Assignments }: any) {
+export default function TeacherAssignmentCard({ courseId, Assignments }: any) {
 
   const classes = useStyles();
 
@@ -90,6 +92,12 @@ export default function TeacherAssignmentCard({ Assignments }: any) {
             </Typography>
           </Grid>
       }
+      {Assignments !== undefined &&
+          <Form {...courseId}/>
+      }
+
+
+      
     </React.Fragment>
   );
 }

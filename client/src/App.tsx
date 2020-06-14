@@ -14,6 +14,7 @@ import CreateAccount from './components/Auth/CreateAccountForm'
 //Student Components
 import StudentHome from './components/studentHome/sudentHome'
 import CourseSearch from './components/CourseSearch/CourseSearch'
+import StudentGrade from './components/StudentGrade/studentGrade'
 
 //Teacher Components
 import ClassHoursPage from './pages/Main/ClassHoursPage'
@@ -35,6 +36,7 @@ class App extends Component {
               {/*<Route path ='*'><Redirect to='/' /></Route>*/}
 
               <PrivateRoute exact path='/student-course-search' component={CourseSearch} />
+              <PrivateRoute exact path='/student-grades' component={StudentGrade} />
               
               <PrivateRoute path='/teacher-grades' component={GradesPage} />
               <PrivateRoute path='/teacher-class-hours' component={ClassHoursPage} />
