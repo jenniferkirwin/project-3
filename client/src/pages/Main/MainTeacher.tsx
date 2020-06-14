@@ -128,7 +128,7 @@ export default function Dashboard() {
                             {/* Teacher Assignments */}
                             <Grid item xs={12}>
                                 <Paper className={classes.paper}>
-                                    <TeacherPage {...assignments} />
+                                    
                                 </Paper>
                             </Grid>
                         </Grid>
