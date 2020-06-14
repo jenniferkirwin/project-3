@@ -20,6 +20,7 @@
     "@types/react-router-dom": "^5.1.5",
     "axios": "^0.19.2",
     "firebase": "^7.14.6",
+    "moment": "^2.26.0",
     "mysql2": "^2.1.0",
     "react": "^16.13.1",
     "react-debounce-input": "^3.2.2",

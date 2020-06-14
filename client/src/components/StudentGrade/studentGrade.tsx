@@ -5,7 +5,11 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import GradeCard from "./GradeCard";
 
+import AppBar from "../Nav/AppBar";
+import { Redirect } from "react-router";
 
+import APIUtil from "./../../util/api";
+const API = new APIUtil();
 
 const useStyles = makeStyles((theme) => ({
   shift: {
@@ -46,6 +50,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleTable() {
   const classes = useStyles();
+  const [grades] = React.useState(null);
+
+  React.useEffect(() => {
+    // API.getAssignments()
+  }, []);
+
   const data = [
     {
       id: "lkjho",
@@ -56,7 +66,7 @@ export default function SimpleTable() {
       grade: "-",
       dueDate: "03/20/2020",
       submitDate: "",
-      details: "just submit somehitng "
+      details: "just submit somehitng ",
     },
     {
       id: "asidhed",
@@ -67,8 +77,7 @@ export default function SimpleTable() {
       grade: "",
       dueDate: "03/20/2020",
       submitDate: "",
-      details: "just submit somehitng "
-
+      details: "just submit somehitng ",
     },
     {
       id: "cnghdk",
@@ -79,7 +88,7 @@ export default function SimpleTable() {
       grade: "",
       dueDate: "03/20/2020",
       submitDate: "",
-      details: "just submit somehitng "
+      details: "just submit somehitng ",
     },
     {
       id: "qwere",
@@ -90,8 +99,7 @@ export default function SimpleTable() {
       grade: "",
       dueDate: "03/20/2020",
       submitDate: "",
-      details: "just submit somehitng "
-
+      details: "just submit somehitng ",
     },
     {
       id: "asdf",
@@ -102,14 +110,21 @@ export default function SimpleTable() {
       grade: "",
       dueDate: "03/20/2020",
       submitDate: "",
-      details: "just submit somehitng "
-
+      details: "just submit somehitng ",
     },
   ];
-  const [grades, ] = React.useState(data);
 
+  let userRoleId = sessionStorage.Role;
+  //Student Role: f21db5e4-d63c-4736-9098-04bf4da0ee9e
+  //Teacher Role: 5ede9c42-1f1f-4425-8de4-affe508b5adb
+
+  if (userRoleId !== "f21db5e4-d63c-4736-9098-04bf4da0ee9e") {
+    return <Redirect to="/" />;
+  }
   return (
-    <Container maxWidth="xl">
+    <>
+      <AppBar />
+      <Container maxWidth="xl">
         <Grid container direction="row">
           <Grid item xs={12}>
             <Typography
@@ -136,7 +151,7 @@ export default function SimpleTable() {
             ></GradeCard>
           ))}
         </Grid>
-    </Container>
+      </Container>
+    </>
   );
 }
-
