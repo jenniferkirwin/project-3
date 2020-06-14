@@ -34,6 +34,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+interface UserGrades {
+    User: {
+        firstName: string;
+        lastName: string;
+    }
+}
+
 export default function GradesCard() {
 
     const classes = useStyles();

@@ -1,4 +1,4 @@
-import React , { useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -9,7 +9,21 @@ import ClassHoursCard from './TeacherAssignmentPage/Card/ClassHours';
 import GradesCard from './TeacherAssignmentPage/Card/GradesCard';
 import TeacherAssingmentCard from './TeacherAssignmentPage/Card/index';
 import TeacherAppBar from './TeacherAssignmentPage/NavBar/index';
+import TeacherPage from '../Main/TeacherAssignmentPage/LandingGrid/index';
 import { Redirect } from "react-router";
+
+import APIUtil from '../../util/api';
+const API = new APIUtil();
+
+interface AssignmentAPICall {
+  Enrollments: Array<object>;
+  SchoolSchoolId: string;
+  UserUserId: string;
+  courseId: string;
+  courseName: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
 
 const useStyles = makeStyles((theme) => ({
@@ -70,12 +84,24 @@ export default function Dashboard() {
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+    const [assignments, setAssignments] = useState([]);
+
+    useEffect(() => {
+        API.getTeacherAssignments(sessionStorage.getItem('UID'))
+        .then(({data}:any | null) => {
+            setAssignments(data)
+        })
+        .catch((error:any) => {
+            console.log(error)
+        });
+    }, []);
+
     let userRoleId = sessionStorage.Role;
     //Student Role: f21db5e4-d63c-4736-9098-04bf4da0ee9e
     //Teacher Role: 5ede9c42-1f1f-4425-8de4-affe508b5adb
-  
+
     if (userRoleId !== "5ede9c42-1f1f-4425-8de4-affe508b5adb") {
-      return <Redirect to="/" />;
+        return <Redirect to="/" />;
     }
 
     return (
@@ -102,7 +128,7 @@ export default function Dashboard() {
                             {/* Teacher Assignments */}
                             <Grid item xs={12}>
                                 <Paper className={classes.paper}>
-                                    <TeacherAssingmentCard />
+                                    <TeacherPage {...assignments} />
                                 </Paper>
                             </Grid>
                         </Grid>

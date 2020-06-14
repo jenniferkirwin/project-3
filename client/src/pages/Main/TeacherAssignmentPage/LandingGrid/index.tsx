@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export default function TeacherPage() {
+export default function TeacherPage({Assignments}:any) {
 
     const classes = useStyles();
 
@@ -51,21 +51,16 @@ export default function TeacherPage() {
 
                         <Grid item xs={12} md={8} lg={9}>
 
-                            <TeacherAssignmentCard />
+                            {Assignments !== undefined &&
+
+                                Assignments.map((assignment:any) => (
+                                    <TeacherAssignmentCard {...assignment} key={assignment.assignmentId}/>
+                                ))
+                            }
 
                         </Grid>
 
-                        {/* <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
-                                <TeacherAssignmentCard />
-                            </Paper>
-                        </Grid>
-
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
-                                <TeacherAssignmentCard />
-                            </Paper>
-                        </Grid> */}
+                        
                     </Grid>
                 </Container>
             </main>

@@ -10,8 +10,10 @@ import Typography from "@material-ui/core/Typography";
 import Notifications from "../Notifications" ;
 import AppBar from '../Nav/AppBar';
 import { Redirect } from "react-router";
+import APIUtil from '../../util/api';
+import CourseCard from '../CourseSearch/courseCard';
 
-
+const API = new APIUtil;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,30 +44,62 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '20px',
 },
 
-
 }));
-//  <Paper elevation={3} className={classes.paper}> </Paper>
-//      <Nav/>
-export default function StudentHome() {
-  const classes = useStyles();
-  const example =  [
-    { title: 'event 1', date: '2020-05-01', url: "2020-05-01" },
-    { title: 'event 2', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 4', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 6', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 8', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 12', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 14', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 10', date: '2020-05-20', url: "2020-05-20" },
-    { title: 'event 5', date: '2020-06-03', url: "2020-06-03"}
-  ]
 
-  let userRoleId = sessionStorage.Role;
-  //Student Role: f21db5e4-d63c-4736-9098-04bf4da0ee9e
-  //Teacher Role: 5ede9c42-1f1f-4425-8de4-affe508b5adb
+  //  <Paper elevation={3} className={classes.paper}> </Paper>
+  //      <Nav/>
+  export default function StudentHome() {
+    const classes = useStyles();
+    const example =  [
+      { title: 'Tutoring', date: '2020-06-03', url: "2020-06-03" },
+      { title: 'Tutoring', date: '2020-06-10', url: "2020-06-10" },
+      { title: 'Tutoring', date: '2020-06-17', url: "2020-06-17" },
+      { title: 'Tutoring', date: '2020-06-24', url: "2020-06-24" },
+      { title: 'Graduation', date: '2020-06-30', url: "2020-06-30" },
+      { title: 'Presentation', date: '2020-06-15', url: "2020-06-15" },
+      { title: 'Advisor Meeting', date: '22020-06-11', url: "2020-06-11" },
+      { title: 'Class Event', date: '2020-06-26', url: "2020-06-26" },
+      { title: 'Project Due', date: '2020-06-12', url: "2020-06-12"}
+    ]
+        
+  const [courses, setCourses] = React.useState([])
 
-  if (userRoleId !== "f21db5e4-d63c-4736-9098-04bf4da0ee9e") {
-    return <Redirect to="/" />;
+  let courseAnnouncements: { 
+      CourseCourseId: string, 
+      announcementId: string, 
+      announcementText: string, 
+      createdAt: string, 
+      updatedAt: string 
+  }[] = [];
+
+let individualAnnouncements: string[] = [];
+
+const [announcements, setAnnouncements] = React.useState([] as any)
+
+
+  React.useEffect(() => {
+    loadCourses();
+  }, [])
+
+  function loadCourses() {
+    API.getStudentCourses(sessionStorage.getItem('UID'))
+        .then(res => {
+          setCourses(res.data);
+          return res.data.forEach(function (value: any) {
+            courseAnnouncements.push(value.Announcements);
+          })
+        }).then(res => {
+          return courseAnnouncements.forEach(function (value: any) {
+              if (value.length>0) {
+                value.forEach(function (val: any) {
+                  individualAnnouncements.push(val)
+                })
+              }
+          })
+        }).then(res => {
+          setAnnouncements(individualAnnouncements)
+        })
+        .catch(err => console.log(err));
   }
 
   return (
@@ -86,10 +120,11 @@ export default function StudentHome() {
               direction="row"
               className={classes.mg}
             >  
-                <StudentCard /> 
-                <StudentCard />
-                <StudentCard /> 
-                <StudentCard /> 
+                {courses.map(course => {
+                  return (
+                    <StudentCard {...course}/>
+                  );
+                })}
             </Grid>
           </Grid>
         <Grid  item xs={12} sm={6} spacing={1}> 
@@ -100,17 +135,15 @@ export default function StudentHome() {
               </Grid> 
               <Grid item xs={12}>
                 <Box className={classes.ntf} >
-                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-                  <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" /> 
-
-
-                  </Box>
-                <Box m={10} >This has the day events and any current notifcations</Box>
+                  {announcements.map((announcement: any) => {
+                    return (
+                      // <p>Notification here</p>
+                      <Notifications {...announcement}/>
+                    );
+                  })}
+                  {/* <Notifications title="testing" body="moretesting" course="derp"  date="05/27/2020" />  */}
+                </Box>
+                <Box m={10} ></Box>
               </Grid>
               <Grid item xs={12}>
                 <Calender event={example} />

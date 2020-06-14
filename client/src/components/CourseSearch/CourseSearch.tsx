@@ -12,7 +12,6 @@ import { Redirect } from "react-router";
 import APIUtil from './../../util/api';
 const API = new APIUtil;
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -101,7 +100,6 @@ let courseData = [
 
 const foundCourses = () => API.getCourses(sessionStorage.getItem('School'))
   .then(({data}) => {
-    console.log(data)
     courseData = data;
   })
   .catch((error) => {
@@ -138,7 +136,7 @@ export default function SearchCourse(){
   return filtered ;
     }
 
-    //call filters based on returens from other filters 
+    //call filters based on returns from other filters 
     const filter = (text:string) =>{
         // filter title filters based on  coursename 
         let courseText = filterTitle(text); 
@@ -153,7 +151,6 @@ export default function SearchCourse(){
            }else{
              setCourses(testTime);
            }
-           //here is where we will add future filters such as by time
         }  
    }
 
