@@ -11,6 +11,64 @@ import { Redirect } from "react-router";
 import APIUtil from "./../../util/api";
 const API = new APIUtil();
 
+const testData = [
+  {
+    id: "lkjho",
+    title: "Homework 1",
+    status: "Not submited",
+    submited: false,
+    graded: false,
+    grade: "-",
+    dueDate: "03/20/2020",
+    submitDate: "",
+    details: "just submit somehitng ",
+  },
+  {
+    id: "asidhed",
+    title: "Homework 1",
+    status: "Not submited",
+    submited: false,
+    graded: false,
+    grade: "",
+    dueDate: "03/20/2020",
+    submitDate: "",
+    details: "just submit somehitng ",
+  },
+  {
+    id: "cnghdk",
+    title: "Homework 1",
+    status: "Not submited",
+    submited: false,
+    graded: false,
+    grade: "",
+    dueDate: "03/20/2020",
+    submitDate: "",
+    details: "just submit somehitng ",
+  },
+  {
+    id: "qwere",
+    title: "Homework 1",
+    status: "Not submited",
+    submited: false,
+    graded: false,
+    grade: "",
+    dueDate: "03/20/2020",
+    submitDate: "",
+    details: "just submit somehitng ",
+  },
+  {
+    id: "asdf",
+    title: "Homeowrk 1",
+    status: "Not submited",
+    submited: false,
+    graded: false,
+    grade: "",
+    dueDate: "03/20/2020",
+    submitDate: "",
+    details: "just submit somehitng ",
+  },
+];
+
 const useStyles = makeStyles((theme) => ({
   shift: {
     marginLeft: "100px",
@@ -50,70 +108,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleTable() {
   const classes = useStyles();
-  const [grades] = React.useState(null);
+  const [grades] = React.useState(testData);
 
   React.useEffect(() => {
     // API.getAssignments()
   }, []);
 
-  const data = [
-    {
-      id: "lkjho",
-      title: "Homework 1",
-      status: "Not submited",
-      submited: false,
-      graded: false,
-      grade: "-",
-      dueDate: "03/20/2020",
-      submitDate: "",
-      details: "just submit somehitng ",
-    },
-    {
-      id: "asidhed",
-      title: "Homework 1",
-      status: "Not submited",
-      submited: false,
-      graded: false,
-      grade: "",
-      dueDate: "03/20/2020",
-      submitDate: "",
-      details: "just submit somehitng ",
-    },
-    {
-      id: "cnghdk",
-      title: "Homework 1",
-      status: "Not submited",
-      submited: false,
-      graded: false,
-      grade: "",
-      dueDate: "03/20/2020",
-      submitDate: "",
-      details: "just submit somehitng ",
-    },
-    {
-      id: "qwere",
-      title: "Homework 1",
-      status: "Not submited",
-      submited: false,
-      graded: false,
-      grade: "",
-      dueDate: "03/20/2020",
-      submitDate: "",
-      details: "just submit somehitng ",
-    },
-    {
-      id: "asdf",
-      title: "Homeowrk 1",
-      status: "Not submited",
-      submited: false,
-      graded: false,
-      grade: "",
-      dueDate: "03/20/2020",
-      submitDate: "",
-      details: "just submit somehitng ",
-    },
-  ];
-
+  const submitAsigment = () => {};
+  //=================================
   let userRoleId = sessionStorage.Role;
   //Student Role: f21db5e4-d63c-4736-9098-04bf4da0ee9e
   //Teacher Role: 5ede9c42-1f1f-4425-8de4-affe508b5adb
