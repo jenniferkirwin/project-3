@@ -83,8 +83,8 @@ const SignUp = ({ history }) => {
                             </Grid>
                             <Grid item xs={6}>
                                 <div className="input-field">
-                                    <label htmlFor="role">Role</label>
-                                    <input type="text" id='role' />
+                                    {/* <label htmlFor="role">Role</label> */}
+                                    <input type="text" id='role' value='Student' readOnly/>
                                 </div>
                                 {/* <FormControl style={{minWidth: 150}}>
                                     <InputLabel id="demo-simple-select-label">Role</InputLabel>
@@ -97,8 +97,8 @@ const SignUp = ({ history }) => {
                             </Grid>
                             <Grid item xs={6}>
                                 <div className="input-field">
-                                    <label htmlFor="school">School</label>
-                                    <input type="text" id='school' />
+                                    {/* <label htmlFor="school">School</label> */}
+                                    <input type="text" id='school' value='Hogwarts' readOnly/>
                                 </div>
                                 {/* <FormControl style={{minWidth: 120}}>
                                     <InputLabel id="demo-simple-select-label">School</InputLabel>
