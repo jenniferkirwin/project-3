@@ -197,7 +197,7 @@ export default function SearchAppBar() {
         },
         {
           listIcon: <GradeIcon />,
-          listText: "Student Asignments",
+          listText: "Student Assignments",
           listPath: "/student-grades",
         },
       ];
@@ -240,7 +240,7 @@ export default function SearchAppBar() {
         },
         {
           listIcon: <GradeIcon />,
-          listText: "Student Asignments",
+          listText: "Student Assignments",
           listPath: "/student-grades",
         },
         {
