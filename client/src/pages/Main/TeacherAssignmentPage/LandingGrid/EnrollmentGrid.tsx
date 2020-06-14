@@ -39,24 +39,15 @@ export default function EnrollmentGrid({Enrollments}:any) {
     console.log(Enrollments);
 
     return (
-
-            
-                
-                // <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
-                    <Grid container spacing={3}>
-
-                    {Enrollments !== undefined &&
-                      // <h2>Hello</h2>
-                      Enrollments.map((enrollment:any) => (
-                        <EnrollmentCard {...enrollment} key={enrollment.enrollmentId}/>
-                      ))
-                    }
-
-                      
-
-                    </Grid>
-                </Container>
+      <Container maxWidth="lg" className={classes.container}>
+          <Grid container spacing={3}>
+            {Enrollments !== undefined &&
+              Enrollments.map((enrollment:any) => (
+                <EnrollmentCard {...enrollment} key={enrollment.enrollmentId}/>
+              ))
+            }
+          </Grid>
+      </Container>
             
     )
 
