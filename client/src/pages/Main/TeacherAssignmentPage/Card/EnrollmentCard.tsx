@@ -5,11 +5,10 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 300,
-        minHeight: 200,
         marginBottom: '16px',
         marginTop: '10px',
         marginRight: '20px',
@@ -34,33 +33,44 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function EnrollmentCard() {
+interface UserEnrollment {
+  User: {
+    createdAt: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+    updatedAt: string;
+    userId: string;
+  };
+  UserUserId: string;
+  enrollmentId: string;
+}
+
+export default function EnrollmentCard({User, UserUserId, enrollmentId}:UserEnrollment) {
 
     const classes = useStyles();
 
     return(
-        <div>
 
-        </div>
+          <Grid item xs={12} md={3} lg={4} xl={4}>
+            <Card className={classes.root}>
+                <CardContent>
+                    <div id={UserUserId}>
+                        <Typography className={classes.title} gutterBottom variant="h5" component="h2">
+                            {User.firstName} {User.lastName}
+                        </Typography>
+                        <Typography variant="body1" color="textSecondary" component="p">
+                        {User.firstName}{User.lastName}
+                        </Typography>
+                    </div>
+                </CardContent>
+                <CardActions>
+                    <Button size="small">Grades</Button>
+                </CardActions>
+            </Card>
+          </Grid>
+
     )
 
 }
 
-// {submitted.map((submit) => (
-//     <Card className={classes.root}>
-//         <CardContent>
-//             <div key={submit.id}>
-//                 <Typography className={classes.title} gutterBottom variant="h5" component="h2">
-//                     {submit.submittedId}
-//                 </Typography>
-//                 <Typography variant="body2" color="textSecondary" component="p">
-//                     {submit.submittedContent}
-//                 </Typography>
-//                 <h3>{submit.grade}</h3>
-//             </div>
-//         </CardContent>
-//         <CardActions>
-//             <Button size="small">Grades</Button>
-//         </CardActions>
-//     </Card>
-// ))}
