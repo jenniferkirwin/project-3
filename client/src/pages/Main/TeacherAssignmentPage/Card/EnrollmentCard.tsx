@@ -60,12 +60,18 @@ export default function EnrollmentCard({User, UserUserId, enrollmentId}:UserEnro
                             {User.firstName} {User.lastName}
                         </Typography>
                         <Typography variant="body1" color="textSecondary" component="p">
-                        {User.firstName}{User.lastName}
+                          First Name:{User.firstName}
+                        </Typography>
+                        <Typography variant="body1" color="textSecondary" component="p">
+                          Last Name:{User.lastName}
+                        </Typography>
+                        <Typography variant="body1" color="textSecondary" component="p">
+                          E-Mail:{User.email}
                         </Typography>
                     </div>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">Grades</Button>
+                    <Button size="small">Assignments</Button>
                 </CardActions>
             </Card>
           </Grid>
