@@ -100,7 +100,6 @@ let courseData = [
 
 const foundCourses = () => API.getCourses(sessionStorage.getItem('School'))
   .then(({data}) => {
-    console.log(data)
     courseData = data;
   })
   .catch((error) => {
