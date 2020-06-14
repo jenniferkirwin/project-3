@@ -20,6 +20,12 @@ interface SubmittedAssignment {
   submittedContent: string;
 }
 
+interface NewAssignment {
+  assignmentText: string,
+  dueDate: string,
+  courseId: string  
+}
+
 // API Calls
 // ------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------
@@ -83,6 +89,14 @@ export default class Api {
         courseId: student.courseId
       }
     });
+  }
+
+  createAssignment = (assignment:NewAssignment) => {
+    return axios.post('/teacher/assignments', {
+      assignmentText: assignment.assignmentText,
+      dueDate: assignment.dueDate,
+      courseId: assignment.courseId  
+    })
   }
 
 }
